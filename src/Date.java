@@ -31,9 +31,7 @@ public class Date {
         if (obj == null) return false;
         if (!(obj instanceof Date))
             return false;
-        if (obj.hashCode() != hashCode())
-            return false;
-        return true;
+        return hashCode() == ((Date)obj).hashCode();
     }
 
     @Override

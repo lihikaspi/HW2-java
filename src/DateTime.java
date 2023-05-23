@@ -39,9 +39,7 @@ public class DateTime extends Date {
         if (obj == null) return false;
         if (!(obj instanceof DateTime))
             return false;
-        if (obj.hashCode() != hashCode())
-            return false;
-        return true;
+        return hashCode() == ((DateTime)obj).hashCode();
     }
 
     @Override

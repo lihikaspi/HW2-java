@@ -1,4 +1,10 @@
 public class Difference extends Function {
+    private Function f;
+    private Function g;
+    public Difference(Function f, Function g){
+        this.f = f;
+        this.g = g;
+    }
 
     public double valueAt(int x) {
 

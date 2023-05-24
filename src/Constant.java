@@ -14,7 +14,7 @@ public class Constant extends Function {
         return "0";
     }
 
-    public double bisectionMethod(int a, int b, int epsilon) {
+    public double bisectionMethod(int a, int b, double epsilon) {
         return a;
     }
 
@@ -22,7 +22,7 @@ public class Constant extends Function {
         return a;
     }
 
-    public double newtonRaphsonMethod(int a, int epsilon) {
+    public double newtonRaphsonMethod(int a, double epsilon) {
         return a;
     }
 

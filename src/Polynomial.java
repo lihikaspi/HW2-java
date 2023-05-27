@@ -3,11 +3,12 @@ public class Polynomial extends Function {
 
 
     public Polynomial(double...  coefficients) {
-        super(turnToString()); // turn to string
+        super();
         this.coefficients = coefficients;
+        turnToString();
     }
 
-    private String turnToString() {
+    private void turnToString() {
         String func = "";
         for (int i = 0; i < coefficients.length; i++) {
             if (coefficients[i] == 0) continue;
@@ -19,7 +20,7 @@ public class Polynomial extends Function {
                 else func += coefficients[i] + "x^" + i;
             }
         }
-        return func;
+        super.setFunction(func);
     }
     public double valueAt(double x) {
 

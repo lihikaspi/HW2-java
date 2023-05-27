@@ -1,7 +1,20 @@
 public class Power extends Function {
+    private int power;
+    private Function function;
+
+    public Power(Function function,int power) {
+        super();
+        this.function = function;
+        this.power = power;
+        turnToString();
+    }
+
+    private void turnToString() {
+        super.setFunction(function.getFunction() + "^" + power);
+    }
 
     public double valueAt(double x) {
-
+        return Math.pow(function.valueAt(x), power);
     }
     public String derivative() {
 
@@ -20,5 +33,10 @@ public class Power extends Function {
     }
     public double taylorPolynomial(int n) {
 
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

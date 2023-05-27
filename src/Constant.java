@@ -2,8 +2,9 @@ public class Constant extends Function {
     private final double constant;
 
     public Constant(double constant) {
-        super(Double.toString(constant));
+        super();
         this.constant = constant;
+        super.setFunction(Double.toString(constant));
     }
 
     public double valueAt(double x) {

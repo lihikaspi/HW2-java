@@ -8,14 +8,15 @@ public class Difference extends Function {
      * @param g second
      */
     public Difference(Function f, Function g){
-        super(differenceFunction());
+        super();
         this.f = f;
         this.g = g;
+        turnToString();
     }
 
-    private String differenceFunction() {
-        String diff = // TODO: calculate the difference function and send to Function class
-        return diff;
+    private void turnToString() {
+        String diff = // TODO: calculate the difference function and set in Function class
+        super.setFunction(diff);
     }
 
     public double valueAt(double x) {

@@ -1,9 +1,10 @@
 public class MultiSum extends Function {
     private Function[] functions;
-    private Function sumFunction;
 
     public MultiSum(Function... functions) {
+        super();
         this.functions = functions;
+        // TODO: turn to string
     }
 
     public double valueAt(double x) {
@@ -40,6 +41,6 @@ public class MultiSum extends Function {
 
     @Override
     public String toString() {
-
+        return super.toString();
     }
 }

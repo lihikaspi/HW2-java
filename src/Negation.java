@@ -1,9 +1,10 @@
 public class Negation extends Function {
     private Function function;
-    private Function negatedFunction;
 
     public Negation(Function function) {
+        super();
         this.function = function;
+        // TODO: turn to string
     }
 
     public double valueAt(double x) {
@@ -30,6 +31,6 @@ public class Negation extends Function {
 
     @Override
     public String toString() {
-
+        return super.toString();
     }
 }

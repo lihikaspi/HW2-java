@@ -1,9 +1,18 @@
 public abstract class Function {
     private String function;
 
-    public Function(String function) {
+    public Function() {
+
+    }
+
+    public String getFunction() {
+        return function;
+    }
+
+    public void setFunction(String function) {
         this.function = function;
     }
+
     public abstract double valueAt(double x);
     public abstract String derivative();
     public abstract double bisectionMethod(double a, double b, double epsilon);

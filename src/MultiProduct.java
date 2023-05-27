@@ -2,8 +2,9 @@ public class MultiProduct extends Function {
     private Function[] functions;
 
     public MultiProduct(Function... functions) {
-        super(); // turn to string
+        super();
         this.functions = functions;
+        // TODO: turn to string
     }
 
     public double valueAt(double x) {

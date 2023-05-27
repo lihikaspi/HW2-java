@@ -4,7 +4,7 @@ public class Date {
     private  int year;
 
     public Date(int year, int month, int day) {
-        if (year > 9999 || year < -9999) this.year = 0;
+        if (year > 3999 || year < -3999) this.year = 0;
         else this.year = year;
         if (month < 1 || month > 12) this.month = 1;
         else this.month = month;

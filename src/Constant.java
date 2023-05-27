@@ -2,11 +2,11 @@ public class Constant extends Function {
     private final double constant;
 
     public Constant(double constant) {
-        super();
+        super(Double.toString(constant));
         this.constant = constant;
     }
 
-    public double valueAt(int x) {
+    public double valueAt(double x) {
         return constant;
     }
 
@@ -14,19 +14,20 @@ public class Constant extends Function {
         return "0";
     }
 
-    public double bisectionMethod(int a, int b, double epsilon) {
+    // what to return ???????
+    public double bisectionMethod(double a, double b, double epsilon) {
         return a;
     }
 
-    public double bisectionMethod(int a, int b) {
+    public double bisectionMethod(double a, double b) {
         return a;
     }
 
-    public double newtonRaphsonMethod(int a, double epsilon) {
+    public double newtonRaphsonMethod(double a, double epsilon) {
         return a;
     }
 
-    public double newtonRaphsonMethod(int a) {
+    public double newtonRaphsonMethod(double a) {
         return a;
     }
 
@@ -36,6 +37,6 @@ public class Constant extends Function {
 
     @Override
     public String toString() {
-        return "(" + constant + ")";
+        return super.toString();
     }
 }

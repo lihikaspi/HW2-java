@@ -1,24 +1,35 @@
 public class Negation extends Function {
+    private Function function;
+    private Function negatedFunction;
 
-    public double valueAt(int x) {
+    public Negation(Function function) {
+        this.function = function;
+    }
+
+    public double valueAt(double x) {
 
     }
     public String derivative() {
 
     }
-    public double bisectionMethod(int a, int b, double epsilon) {
+    public double bisectionMethod(double a, double b, double epsilon) {
 
     }
-    public double bisectionMethod(int a, int b) {
+    public double bisectionMethod(double a, double b) {
 
     }
-    public double newtonRaphsonMethod(int a, double epsilon) {
+    public double newtonRaphsonMethod(double a, double epsilon) {
 
     }
-    public double newtonRaphsonMethod(int a) {
+    public double newtonRaphsonMethod(double a) {
 
     }
     public double taylorPolynomial(int n) {
+
+    }
+
+    @Override
+    public String toString() {
 
     }
 }

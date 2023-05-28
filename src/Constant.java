@@ -7,31 +7,38 @@ public class Constant extends Function {
         super.setFunction(Double.toString(constant));
     }
 
+    @Override
     public double valueAt(double x) {
         return constant;
     }
 
+    @Override
     public String derivative() {
         return "0";
     }
 
     // what to return ???????
+    @Override
     public double bisectionMethod(double a, double b, double epsilon) {
         return a;
     }
 
+    @Override
     public double bisectionMethod(double a, double b) {
         return a;
     }
 
+    @Override
     public double newtonRaphsonMethod(double a, double epsilon) {
         return a;
     }
 
+    @Override
     public double newtonRaphsonMethod(double a) {
         return a;
     }
 
+    @Override
     public double taylorPolynomial(int n) {
         return constant;
     }

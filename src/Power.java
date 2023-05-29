@@ -10,7 +10,7 @@ public class Power extends Function {
     }
 
     private void turnToString() {
-        super.setFunction(function.getFunction() + "^" + power);
+        super.setFunction(function.toString() + "^" + power);
     }
 
     @Override
@@ -20,7 +20,9 @@ public class Power extends Function {
 
     @Override
     public String derivative() {
-
+        String derivative = power + function.derivative() + function.toString() + "^" + (power-1);
+        // TODO: fix string
+        return derivative;
     }
 
     @Override

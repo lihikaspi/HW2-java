@@ -2,7 +2,7 @@ public class Constant extends Function {
     private final double constant;
 
     public Constant(double constant) {
-        super();
+        super(); // need to do this???
         this.constant = constant;
         super.setFunction(Double.toString(constant));
     }

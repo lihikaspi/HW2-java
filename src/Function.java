@@ -2,11 +2,7 @@ public abstract class Function {
     private String function;
 
     public Function() {
-
-    }
-
-    public String getFunction() {
-        return function;
+        this.function = null;
     }
 
     public void setFunction(String function) {

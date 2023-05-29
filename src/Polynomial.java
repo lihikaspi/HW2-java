@@ -1,7 +1,6 @@
 public class Polynomial extends Function {
     private final double[] coefficients;
 
-
     public Polynomial(double...  coefficients) {
         super();
         this.coefficients = coefficients;
@@ -9,9 +8,12 @@ public class Polynomial extends Function {
     }
 
     private void turnToString() {
+        // TODO: add + and - between powers
         String func = "";
         for (int i = 0; i < coefficients.length; i++) {
             if (coefficients[i] == 0) continue;
+            if (coefficients[i] == 1 && i != 0) func += "x^" + i;
+            if (coefficients[i] == 1 && i != 0) func += "-x^" + i;
             if (coefficients[i]%1 == 0) {
                 if (i == 0) func += (int)coefficients[i];
                 else func += (int)coefficients[i] + "x^" + i;
@@ -25,7 +27,11 @@ public class Polynomial extends Function {
 
     @Override
     public double valueAt(double x) {
-
+        int sum = 0;
+        for (int i = 0; i < coefficients.length; i++) {
+            sum += coefficients[i] * Math.pow(x, i);
+        }
+        return sum;
     }
 
     @Override

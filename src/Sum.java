@@ -6,6 +6,10 @@ public class Sum extends Function {
         super();
         this.f = f;
         this.g = g;
+        turnToString();
+    }
+
+    private void turnToString() {
         // TODO: turn to string
     }
 
@@ -16,7 +20,9 @@ public class Sum extends Function {
 
     @Override
     public String derivative() {
-
+        String derivative = f.derivative() + g.derivative();
+        // TODO: fix string
+        return derivative;
     }
 
     @Override

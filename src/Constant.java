@@ -1,15 +1,43 @@
-public class Constant extends Function {
-    private final double constant;
+public class Constant extends Function implements AddMultiply {
+    private final double value;
 
-    public Constant(double constant) {
+    public Constant(double value) {
         super(); // need to do this???
-        this.constant = constant;
-        super.setFunction(Double.toString(constant));
+        this.value = value;
+        super.setFunction(Double.toString(value));
+    }
+
+    public double getValue() {
+        return this.value;
+    }
+
+    @Override
+    public Polynomial add(Polynomial function) {
+        // constant + polynomial
+        return function.add(this);
+    }
+
+    @Override
+    public Polynomial add(Constant constant) {
+        // constant + constant
+        return new Polynomial(this.value + constant.getValue());
+    }
+
+    @Override
+    public Polynomial multiply(Polynomial function) {
+        // constant * polynomial
+        return function.multiply(this);
+    }
+
+    @Override
+    public Polynomial multiply(Constant constant) {
+        // constant * constant
+        new Polynomial(this.value * constant.getValue());
     }
 
     @Override
     public double valueAt(double x) {
-        return constant;
+        return value;
     }
 
     @Override
@@ -40,7 +68,7 @@ public class Constant extends Function {
 
     @Override
     public double taylorPolynomial(int n) {
-        return constant;
+        return value;
     }
 
     @Override

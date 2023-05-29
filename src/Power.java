@@ -20,7 +20,9 @@ public class Power extends Function {
 
     @Override
     public String derivative() {
-        String derivative = power + function.derivative() + function.toString() + "^" + (power-1);
+        String derivative;
+        if (power == 1)  derivative = power + function.derivative();
+        else derivative = power + function.derivative() + function.toString() + "^" + (power-1);
         // TODO: fix string
         return derivative;
     }

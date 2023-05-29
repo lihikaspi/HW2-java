@@ -1,13 +1,17 @@
-public class Polynomial extends Function {
+public class Polynomial extends Function implements AddMultiply {
     private final double[] coefficients;
 
     public Polynomial(double...  coefficients) {
         super();
         this.coefficients = coefficients;
-        turnToString();
+        super.setFunction(turnToString());
     }
 
-    private void turnToString() {
+    public double[] getCoefficients() {
+        return coefficients;
+    }
+
+    private String turnToString() {
         // TODO: add + and - between powers
         String func = "";
         for (int i = 0; i < coefficients.length; i++) {
@@ -22,7 +26,41 @@ public class Polynomial extends Function {
                 else func += coefficients[i] + "x^" + i;
             }
         }
-        super.setFunction(func);
+        return func;
+    }
+
+    @Override
+    public Polynomial add(Polynomial function) {
+        // polynomial + polynomial
+        double[] newCoefficients = new double[coefficients.length];
+        double[] funcCoefficients = function.getCoefficients();
+        for (int i = 1; i < coefficients.length; i++)
+            newCoefficients[i] = coefficients[i] + funcCoefficients[i];
+        return new Polynomial(newCoefficients);
+    }
+
+    @Override
+    public Polynomial add(Constant constant) {
+        // polynomial + constant
+        double[] newCoefficients = new double[coefficients.length];
+        newCoefficients[0] = coefficients[0] + constant.getValue();
+        for (int i = 1; i < coefficients.length; i++)
+            newCoefficients[i] = coefficients[i];
+        return new Polynomial(newCoefficients);
+    }
+
+    @Override
+    public Polynomial multiply(Polynomial function) {
+        // polynomial * polynomial
+    }
+
+    @Override
+    public Polynomial multiply(Constant constant) {
+        // polynomial * constant
+        double[] newCoefficients = new double[coefficients.length];
+        for (int i = 0; i < coefficients.length; i++)
+            newCoefficients[i] = coefficients[i] * constant.getValue();
+        return new Polynomial(newCoefficients);
     }
 
     @Override

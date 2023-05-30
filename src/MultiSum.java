@@ -1,10 +1,19 @@
 public class MultiSum extends Function {
-    private Function[] functions;
+    private final Function[] functions;
 
     public MultiSum(Function... functions) {
         super();
         this.functions = functions;
-        // TODO: turn to string
+        turnToString();
+    }
+
+    private void turnToString() {
+        String function = "";
+        for (int i = 0; i < functions.length; i++) {
+            function += functions[i].toString();
+            if (i != functions.length-1) function += " + ";
+        }
+        super.setFunction(function);
     }
 
     @Override
@@ -18,7 +27,11 @@ public class MultiSum extends Function {
 
     @Override
     public String derivative() {
-
+        String derivative = "(";
+        for (int i = 0; i < functions.length; i++) {
+            derivative += functions[i].derivative();
+        }
+        return derivative + ")";
     }
 
     @Override

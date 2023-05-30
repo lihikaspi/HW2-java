@@ -4,29 +4,39 @@ public class Polynomial extends Function implements AddMultiply {
     public Polynomial(double...  coefficients) {
         super();
         this.coefficients = coefficients;
-        super.setFunction(turnToString());
+        turnToString();
     }
 
     public double[] getCoefficients() {
         return coefficients;
     }
 
-    private String turnToString() {
-        // TODO: add + and - between powers
+    private void turnToString() {
         String func = "";
+        String temp;
+        boolean sign = true;
         for (int i = 0; i < coefficients.length; i++) {
+            // find the different powers
             if (coefficients[i] == 0) continue;
-            if (coefficients[i] == 1 && i != 0) func += "x^" + i;
-            if (coefficients[i] == 1 && i != 0) func += "-x^" + i;
-            if (coefficients[i]%1 == 0) {
-                if (i == 0) func += (int)coefficients[i];
-                else func += (int)coefficients[i] + "x^" + i;
+            if (coefficients[i] > 0) sign = true;
+            else sign = false;
+            if ((coefficients[i] == 1 || coefficients[i] == -1) && i != 0) temp = "x^" + i;
+            if (coefficients[i] % 1 == 0) {
+                if (i == 0) temp = Math.abs((int)coefficients[i]) + "";
+                else temp = Math.abs((int)coefficients[i]) + "x^" + i;
             } else {
-                if (i == 0) func += coefficients[i];
-                else func += coefficients[i] + "x^" + i;
+                if (i == 0) temp = Math.abs(coefficients[i]) + "";
+                else temp = Math.abs(coefficients[i]) + "x^" + i;
+            }
+            // build the function string
+            if (!sign) {
+                func += "- " + temp;
+            } else {
+                if (i == 0) func += temp;
+                else func += "+ " + temp;
             }
         }
-        return func;
+        super.setFunction(func);
     }
 
     @Override
@@ -52,6 +62,7 @@ public class Polynomial extends Function implements AddMultiply {
     @Override
     public Polynomial multiply(Polynomial function) {
         // polynomial * polynomial
+        // TODO
     }
 
     @Override
@@ -74,7 +85,11 @@ public class Polynomial extends Function implements AddMultiply {
 
     @Override
     public String derivative() {
-
+        double[] newCoefficients = new double[coefficients.length-1];
+        for (int i = 1; i < coefficients.length; i++) {
+            newCoefficients[i-1] = coefficients[i] * i;
+        }
+        return new Polynomial(newCoefficients).toString();
     }
 
     @Override

@@ -1,6 +1,7 @@
 public class Power extends Function {
-    private int power;
-    private Function function;
+    private final int power;
+    private final Function function;
+    private Polynomial newFunction; // TODO: represent new function as polynomial --how?
 
     public Power(Function function,int power) {
         super();
@@ -21,9 +22,9 @@ public class Power extends Function {
     @Override
     public String derivative() {
         String derivative;
-        if (power == 1)  derivative = power + function.derivative();
-        else derivative = power + function.derivative() + function.toString() + "^" + (power-1);
-        // TODO: fix string
+        if (power == 1)  derivative = "(" + power + " * " + function.derivative() + ")";
+        else derivative = "(" + power + " * "+ function.derivative() +
+                " * " + function.toString() + "^" + (power-1) + ")";
         return derivative;
     }
 

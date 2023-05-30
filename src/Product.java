@@ -1,22 +1,26 @@
 public class Product extends Function{
-    private Function f;
-    private Function g;
+    private final Function f;
+    private final Function g;
 
     public Product(Function f, Function g) {
         super();
         this.f = f;
         this.g = g;
-        // TODO: turn to string
+        turnToString();
+    }
+
+    private void turnToString() {
+        super.setFunction(f.toString() + " * " + g.toString());
     }
 
     @Override
     public double valueAt(double x) {
-
+        return (f.valueAt(x) * g.valueAt(x));
     }
 
     @Override
     public String derivative() {
-
+        return "(" + f.derivative() + " * " + g.derivative() + ")";
     }
 
     @Override

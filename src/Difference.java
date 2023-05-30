@@ -15,19 +15,17 @@ public class Difference extends Function {
     }
 
     private void turnToString() {
-        String diff = // TODO: calculate the difference function and set in Function class
-        super.setFunction(diff);
+        super.setFunction(f.toString() + " - " + g.toString());
     }
 
     @Override
     public double valueAt(double x) {
-        // f - g
         return f.valueAt(x) - g.valueAt(x);
     }
 
     @Override
     public String derivative() {
-
+        return "(" + f.derivative() + " - " + g.derivative() + ")";
     }
 
     @Override

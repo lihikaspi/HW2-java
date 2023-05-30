@@ -32,7 +32,7 @@ public class Constant extends Function implements AddMultiply {
     @Override
     public Polynomial multiply(Constant constant) {
         // constant * constant
-        new Polynomial(this.value * constant.getValue());
+        return new Polynomial(this.value * constant.getValue());
     }
 
     @Override

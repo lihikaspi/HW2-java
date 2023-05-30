@@ -32,7 +32,7 @@ public class Sum extends Function {
 
     @Override
     public String derivative() {
-        return newFunction.derivative();
+        return "(" + f.derivative() + " + " + g.derivative() + ")";
     }
 
     @Override
@@ -56,8 +56,8 @@ public class Sum extends Function {
     }
 
     @Override
-    public double taylorPolynomial(int n) {
-
+    public String taylorPolynomial(int n) {
+        return newFunction.taylorPolynomial(n);
     }
 
     @Override

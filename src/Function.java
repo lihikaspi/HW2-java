@@ -15,7 +15,7 @@ public abstract class Function {
     public abstract double bisectionMethod(double a, double b);
     public abstract double newtonRaphsonMethod(double a, double epsilon);
     public abstract double newtonRaphsonMethod(double a);
-    public abstract double taylorPolynomial(int n);
+    public abstract String taylorPolynomial(int n);
 
     @Override
     public String toString() {

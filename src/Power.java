@@ -49,7 +49,7 @@ public class Power extends Function {
     }
 
     @Override
-    public double taylorPolynomial(int n) {
+    public String taylorPolynomial(int n) {
 
     }
 

@@ -38,7 +38,7 @@ public class Negation extends Function {
     }
 
     @Override
-    public double taylorPolynomial(int n) {
+    public String taylorPolynomial(int n) {
 
     }
 

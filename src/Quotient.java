@@ -20,7 +20,9 @@ public class Quotient extends Function {
 
     @Override
     public String derivative() {
-        return "(" + f.derivative() + " / " + g.derivative() + ")";
+        return "((" + f.derivative() + " * " + g.toString() +
+                " - " + f.toString() + " * " + g.derivative() + ") / " +
+                new Power(g, 2).toString() + ")";
     }
 
     @Override
@@ -44,8 +46,22 @@ public class Quotient extends Function {
     }
 
     @Override
-    public double taylorPolynomial(int n) {
+    public String taylorPolynomial(int n) {
+        double[] coefficients = new double[n];
+        coefficients[0] = valueAt(0);
+        for (int i = 1; i <= n; i++) {
+            double factorial = factorial(n);
+            // coefficients[i] = derivative(number i).valueAt(0) / factorial;
+        }
+        return new Polynomial(coefficients).toString();
+    }
 
+    private int factorial(int n) {
+        int factorial = 1;
+        for (int i = 1; i <= n; i++) {
+            factorial *= i;
+        }
+        return factorial;
     }
 
     @Override

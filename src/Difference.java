@@ -1,6 +1,7 @@
 public class Difference extends Function {
     private Function f;
     private Function g;
+    private Polynomial newFunction;
 
     /**
      * constructor - assuming the difference is f-g
@@ -12,6 +13,17 @@ public class Difference extends Function {
         this.f = f;
         this.g = g;
         turnToString();
+        subtractFunctions();
+    }
+
+    private void subtractFunctions() {
+        if (f.getClass().getSimpleName().equals("Polynomial")) {
+            if (g.getClass().getSimpleName().equals("Polynomial"))
+                newFunction = ((Polynomial)f).subtract((Polynomial)g);
+            else newFunction = ((Polynomial)f).subtract((Constant) g, true);
+        } else if (g.getClass().getSimpleName().equals("Polynomial"))
+            newFunction = ((Constant)f).subtract((Polynomial)g);
+        else newFunction = ((Constant)f).subtract((Constant) g, true);
     }
 
     private void turnToString() {
@@ -20,7 +32,7 @@ public class Difference extends Function {
 
     @Override
     public double valueAt(double x) {
-        return f.valueAt(x) - g.valueAt(x);
+        return newFunction.valueAt(x);
     }
 
     @Override
@@ -49,8 +61,8 @@ public class Difference extends Function {
     }
 
     @Override
-    public double taylorPolynomial(int n) {
-
+    public String taylorPolynomial(int n) {
+        return newFunction.taylorPolynomial(n);
     }
 
     @Override

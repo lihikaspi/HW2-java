@@ -36,6 +36,19 @@ public class Constant extends Function implements AddMultiply {
     }
 
     @Override
+    public Polynomial subtract(Polynomial function) {
+        // constant - polynomial
+        return function.subtract(this, false);
+    }
+
+    @Override
+    public Polynomial subtract(Constant constant, boolean first) {
+        // constant - constant
+        // ignore first
+        return new Polynomial(this.value - constant.getValue());
+    }
+
+    @Override
     public double valueAt(double x) {
         return value;
     }
@@ -67,8 +80,8 @@ public class Constant extends Function implements AddMultiply {
     }
 
     @Override
-    public double taylorPolynomial(int n) {
-        return value;
+    public String taylorPolynomial(int n) {
+        return toString();
     }
 
     @Override

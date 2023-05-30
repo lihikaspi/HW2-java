@@ -1,10 +1,15 @@
 public class Polynomial extends Function implements AddMultiply {
     private final double[] coefficients;
+    private Polynomial derivative;
 
     public Polynomial(double...  coefficients) {
         super();
         this.coefficients = coefficients;
         turnToString();
+    }
+
+    public Polynomial getDerivative() {
+        return this.derivative;
     }
 
     public double[] getCoefficients() {
@@ -75,6 +80,27 @@ public class Polynomial extends Function implements AddMultiply {
     }
 
     @Override
+    public Polynomial subtract(Polynomial function) {
+        // polynomial - polynomial
+        double[] newCoefficients = new double[coefficients.length];
+        double[] funcCoefficients = function.getCoefficients();
+        for (int i = 1; i < coefficients.length; i++)
+            newCoefficients[i] = coefficients[i] - funcCoefficients[i];
+        return new Polynomial(newCoefficients);
+    }
+    @Override
+    public Polynomial subtract(Constant constant, boolean first) {
+        // first == true --> polynomial - constant
+        // first == false --> constant - polynomial
+        double[] newCoefficients = new double[coefficients.length];
+        if (first) newCoefficients[0] = coefficients[0] - constant.getValue();
+        else newCoefficients[0] = constant.getValue() - coefficients[0];
+        for (int i = 1; i < coefficients.length; i++)
+            newCoefficients[i] = coefficients[i];
+        return new Polynomial(newCoefficients);
+    }
+
+    @Override
     public double valueAt(double x) {
         int sum = 0;
         for (int i = 0; i < coefficients.length; i++) {
@@ -89,7 +115,8 @@ public class Polynomial extends Function implements AddMultiply {
         for (int i = 1; i < coefficients.length; i++) {
             newCoefficients[i-1] = coefficients[i] * i;
         }
-        return new Polynomial(newCoefficients).toString();
+        derivative =  new Polynomial(newCoefficients);
+        return derivative.toString();
     }
 
     @Override
@@ -113,8 +140,14 @@ public class Polynomial extends Function implements AddMultiply {
     }
 
     @Override
-    public double taylorPolynomial(int n) {
-
+    public String taylorPolynomial(int n) {
+        if (n == 0) return coefficients[0] + "";
+        if (n >= coefficients.length) return toString();
+        double[] newCoefficients = new double[n];
+        for (int i = 0; i < n; i++) {
+            newCoefficients[i] = coefficients[i];
+        }
+        return new Polynomial(newCoefficients).toString();
     }
 
     @Override

@@ -37,22 +37,22 @@ public class Sum extends Function {
 
     @Override
     public double bisectionMethod(double a, double b, double epsilon) {
-
+        return newFunction.bisectionMethod(a, b, epsilon);
     }
 
     @Override
     public double bisectionMethod(double a, double b) {
-
+        return newFunction.bisectionMethod(a, b);
     }
 
     @Override
     public double newtonRaphsonMethod(double a, double epsilon) {
-
+        return newFunction.newtonRaphsonMethod(a, epsilon);
     }
 
     @Override
     public double newtonRaphsonMethod(double a) {
-
+        return newFunction.newtonRaphsonMethod(a);
     }
 
     @Override

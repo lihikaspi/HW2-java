@@ -1,10 +1,17 @@
-public class Negation extends Function {
+public class Negation extends Polynomial {
     private final Function function;
 
     public Negation(Function function) {
         super();
         this.function = function;
+        negFunction();
         turnToString();
+    }
+
+    private void negFunction() {
+        if (function.getClass().getSimpleName().equals("Polynomial")) {
+            super.setCoefficients(((Polynomial)function).multiply(new Constant(-1)));
+        } else super.setCoefficients(((Constant)function).multiply(new Constant(-1)));
     }
 
     private void turnToString() {
@@ -13,7 +20,7 @@ public class Negation extends Function {
 
     @Override
     public double valueAt(double x) {
-        return (-1) * function.valueAt(x);
+        return super.valueAt(x);
     }
 
     @Override
@@ -23,27 +30,27 @@ public class Negation extends Function {
 
     @Override
     public double bisectionMethod(double a, double b, double epsilon) {
-
+        return super.bisectionMethod(a, b, epsilon);
     }
 
     @Override
     public double bisectionMethod(double a, double b) {
-
+        return super.bisectionMethod(a, b);
     }
 
     @Override
     public double newtonRaphsonMethod(double a, double epsilon) {
-
+        return super.newtonRaphsonMethod(a, epsilon);
     }
 
     @Override
     public double newtonRaphsonMethod(double a) {
-
+        return super.newtonRaphsonMethod(a);
     }
 
     @Override
     public String taylorPolynomial(int n) {
-        return "(-" + function.taylorPolynomial(n) + ")";
+        return super.taylorPolynomial(n);
     }
 
     @Override

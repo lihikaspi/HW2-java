@@ -1,11 +1,24 @@
 public class Polynomial extends Function implements Operations {
-    private final double[] coefficients;
+    private double[] coefficients;
     private Polynomial derivative;
+
+    public Polynomial() {
+        coefficients = null;
+    }
 
     public Polynomial(double...  coefficients) {
         super();
         this.coefficients = coefficients;
         turnToString();
+    }
+
+    public void setCoefficients(Polynomial polynomial) {
+        this.coefficients = polynomial.getCoefficients();
+    }
+
+    @Override
+    public void setFunction(String function) {
+        super.setFunction(function);
     }
 
     public Polynomial getDerivative() {
@@ -19,11 +32,10 @@ public class Polynomial extends Function implements Operations {
     private void turnToString() {
         String func = "";
         String temp;
-        boolean sign = true;
         for (int i = 0; i < coefficients.length; i++) {
             // find the different powers
             if (coefficients[i] == 0) continue;
-            sign  = coefficients[i] > 0;
+            boolean sign  = coefficients[i] > 0;
             if ((coefficients[i] == 1 || coefficients[i] == -1) && i != 0) temp = "x^" + i;
             if (coefficients[i] % 1 == 0) {
                 if (i == 0) temp = Math.abs((int)coefficients[i]) + "";
@@ -50,6 +62,27 @@ public class Polynomial extends Function implements Operations {
         double[] funcCoefficients = function.getCoefficients();
         for (int i = 1; i < coefficients.length; i++)
             newCoefficients[i] = coefficients[i] + funcCoefficients[i];
+        return new Polynomial(newCoefficients);
+    }
+
+    public static Polynomial add(Function... functions) {
+        double[][] funcCoefficients = new double[functions.length][];
+        int maxLen = 0;
+        for (int i = 0; i < functions.length; i++) {
+            if (functions[i].getClass().getSimpleName().equals("Polynomial"))
+                funcCoefficients[i] = ((Polynomial)functions[i]).getCoefficients();
+            else  {
+                funcCoefficients[i] = new double[1];
+                funcCoefficients[i][0] = ((Constant)functions[i]).getValue();
+            }
+            if (funcCoefficients[i].length > maxLen) maxLen = funcCoefficients[i].length;
+        }
+        double[] newCoefficients = new double[maxLen];
+        for (int i = 0; i < functions.length; i++) {
+            for (int j = 0; i < funcCoefficients[i].length; i++) {
+                newCoefficients[i] += funcCoefficients[i][j];
+            }
+        }
         return new Polynomial(newCoefficients);
     }
 

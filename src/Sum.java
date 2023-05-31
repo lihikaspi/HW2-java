@@ -1,7 +1,6 @@
-public class Sum extends Function {
+public class Sum extends Polynomial {
     private final Function f;
     private final Function g;
-    private Polynomial newFunction;
 
     public Sum(Function f, Function g) {
         super();
@@ -18,16 +17,16 @@ public class Sum extends Function {
     private void addFunctions() {
         if (f.getClass().getSimpleName().equals("Polynomial")) {
             if (g.getClass().getSimpleName().equals("Polynomial"))
-                newFunction = ((Polynomial)f).add((Polynomial)g);
-            else newFunction = ((Polynomial)f).add((Constant) g);
+                super.setCoefficients(((Polynomial)f).add((Polynomial)g));
+            else super.setCoefficients(((Polynomial)f).add((Constant) g));
         } else if (g.getClass().getSimpleName().equals("Polynomial"))
-            newFunction = ((Constant)f).add((Polynomial)g);
-        else newFunction = ((Constant)f).add((Constant) g);
+            super.setCoefficients(((Constant)f).add((Polynomial)g));
+        else super.setCoefficients(((Constant)f).add((Constant) g));
     }
 
     @Override
     public double valueAt(double x) {
-        return newFunction.valueAt(x);
+        return super.valueAt(x);
     }
 
     @Override
@@ -37,27 +36,27 @@ public class Sum extends Function {
 
     @Override
     public double bisectionMethod(double a, double b, double epsilon) {
-        return newFunction.bisectionMethod(a, b, epsilon);
+        return super.bisectionMethod(a, b, epsilon);
     }
 
     @Override
     public double bisectionMethod(double a, double b) {
-        return newFunction.bisectionMethod(a, b);
+        return super.bisectionMethod(a, b);
     }
 
     @Override
     public double newtonRaphsonMethod(double a, double epsilon) {
-        return newFunction.newtonRaphsonMethod(a, epsilon);
+        return super.newtonRaphsonMethod(a, epsilon);
     }
 
     @Override
     public double newtonRaphsonMethod(double a) {
-        return newFunction.newtonRaphsonMethod(a);
+        return super.newtonRaphsonMethod(a);
     }
 
     @Override
     public String taylorPolynomial(int n) {
-        return newFunction.taylorPolynomial(n);
+        return super.taylorPolynomial(n);
     }
 
     @Override

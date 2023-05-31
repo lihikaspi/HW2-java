@@ -20,8 +20,8 @@ public class Quotient extends Function {
 
     @Override
     public String derivative() {
-        return "((" + f.derivative() + " * " + g.toString() +
-                " - " + f.toString() + " * " + g.derivative() + ") / " +
+        return "(((" + f.derivative() + " * " + g.toString() +
+                ") - (" + f.toString() + " * " + g.derivative() + ")) / (" +
                 new Power(g, 2).toString() + ")";
     }
 

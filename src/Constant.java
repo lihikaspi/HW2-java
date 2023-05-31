@@ -1,4 +1,4 @@
-public class Constant extends Function implements AddMultiply {
+public class Constant extends Function implements Operations {
     private final double value;
 
     public Constant(double value) {

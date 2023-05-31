@@ -1,4 +1,4 @@
-public interface AddMultiply {
+public interface Operations {
     Polynomial add(Polynomial function);
     Polynomial add(Constant constant);
     Polynomial multiply(Polynomial function);

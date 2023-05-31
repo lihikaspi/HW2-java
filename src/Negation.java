@@ -1,20 +1,24 @@
 public class Negation extends Function {
-    private Function function;
+    private final Function function;
 
     public Negation(Function function) {
         super();
         this.function = function;
-        // TODO: turn to string
+        turnToString();
+    }
+
+    private void turnToString() {
+        super.setFunction("-" + function.toString());
     }
 
     @Override
     public double valueAt(double x) {
-
+        return (-1) * function.valueAt(x);
     }
 
     @Override
     public String derivative() {
-
+        return "(-" + function.derivative() + ")";
     }
 
     @Override
@@ -39,7 +43,7 @@ public class Negation extends Function {
 
     @Override
     public String taylorPolynomial(int n) {
-
+        return "(-" + function.taylorPolynomial(n) + ")";
     }
 
     @Override

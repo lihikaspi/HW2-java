@@ -1,4 +1,4 @@
-public class Polynomial extends Function implements AddMultiply {
+public class Polynomial extends Function implements Operations {
     private final double[] coefficients;
     private Polynomial derivative;
 
@@ -23,8 +23,7 @@ public class Polynomial extends Function implements AddMultiply {
         for (int i = 0; i < coefficients.length; i++) {
             // find the different powers
             if (coefficients[i] == 0) continue;
-            if (coefficients[i] > 0) sign = true;
-            else sign = false;
+            sign  = coefficients[i] > 0;
             if ((coefficients[i] == 1 || coefficients[i] == -1) && i != 0) temp = "x^" + i;
             if (coefficients[i] % 1 == 0) {
                 if (i == 0) temp = Math.abs((int)coefficients[i]) + "";

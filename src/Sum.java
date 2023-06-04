@@ -7,6 +7,7 @@ public class Sum extends Function {
         this.f = f;
         this.g = g;
         turnToString();
+        super.setDerivative(new Sum(f.getDerivative(), g.getDerivative()));
     }
 
     private void turnToString() {
@@ -20,7 +21,6 @@ public class Sum extends Function {
 
     @Override
     public String derivative() {
-        super.setDerivative(new Sum(f.getDerivative(), g.getDerivative()));
         return "(" + f.derivative() + " + " + g.derivative() + ")";
     }
 

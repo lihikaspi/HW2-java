@@ -12,9 +12,31 @@ public class Date {
         else this.day = day;
     }
 
+    public void setDay(int day) {
+        if (day < 1 || day > 31) this.day = 1;
+        else this.day = day;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
     public void setMonth(int month) {
         if (month < 1 || month > 12) this.month = 1;
         else this.month = month;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public void setYear(int year) {
+        if (year > 3999 || year < -3999) this.year = 0;
+        else this.year = year;
+    }
+
+    public int getYear() {
+        return year;
     }
 
     @Override
@@ -42,7 +64,9 @@ public class Date {
         if (obj == null) return false;
         if (!(obj instanceof Date))
             return false;
-        return hashCode() == ((Date)obj).hashCode();
+        Date date = (Date)obj;
+        return day == date.day && month == date.month && year == date.year
+                && toString().length() == date.toString().length() && hashCode() == date.hashCode();
     }
 
     @Override

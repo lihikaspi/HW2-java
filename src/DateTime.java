@@ -39,7 +39,9 @@ public class DateTime extends Date {
         if (obj == null) return false;
         if (!(obj instanceof DateTime))
             return false;
-        return hashCode() == ((DateTime)obj).hashCode();
+        DateTime dt = (DateTime)obj;
+        return super.equals(obj) && hour == dt.hour && minute == dt.minute
+                && toString().length() == dt.toString().length() && hashCode() == dt.hashCode();
     }
 
     @Override

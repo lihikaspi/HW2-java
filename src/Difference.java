@@ -1,7 +1,7 @@
-public class Difference extends Function {
-    private Function f;
-    private Function g;
-    private Polynomial newFunction;
+public class Difference extends Polynomial {
+    // TODO: maybe shouldn't extend Polynomial ??? what about quotient ???
+    private final Function f;
+    private final Function g;
 
     /**
      * constructor - assuming the difference is f-g
@@ -12,18 +12,18 @@ public class Difference extends Function {
         super();
         this.f = f;
         this.g = g;
-        turnToString();
         subtractFunctions();
+        turnToString();
     }
 
     private void subtractFunctions() {
         if (f.getClass().getSimpleName().equals("Polynomial")) {
             if (g.getClass().getSimpleName().equals("Polynomial"))
-                newFunction = ((Polynomial)f).subtract((Polynomial)g);
-            else newFunction = ((Polynomial)f).subtract((Constant) g, true);
+                super.setCoefficients(((Polynomial)f).subtract((Polynomial)g));
+            else super.setCoefficients(((Polynomial)f).subtract((Constant) g, true));
         } else if (g.getClass().getSimpleName().equals("Polynomial"))
-            newFunction = ((Constant)f).subtract((Polynomial)g);
-        else newFunction = ((Constant)f).subtract((Constant) g, true);
+            super.setCoefficients(((Constant)f).subtract((Polynomial)g));
+        else super.setCoefficients(((Constant)f).subtract((Constant) g, true));
     }
 
     private void turnToString() {
@@ -32,37 +32,38 @@ public class Difference extends Function {
 
     @Override
     public double valueAt(double x) {
-        return newFunction.valueAt(x);
+        return super.valueAt(x);
     }
 
     @Override
     public String derivative() {
+        super.setDerivative(new Difference(f.getDerivative(), g.getDerivative()));
         return "(" + f.derivative() + " - " + g.derivative() + ")";
     }
 
     @Override
     public double bisectionMethod(double a, double b, double epsilon) {
-
+        return super.bisectionMethod(a, b, epsilon);
     }
 
     @Override
     public double bisectionMethod(double a, double b) {
-
+        return super.bisectionMethod(a, b);
     }
 
     @Override
     public double newtonRaphsonMethod(double a, double epsilon) {
-
+        return super.newtonRaphsonMethod(a, epsilon);
     }
 
     @Override
     public double newtonRaphsonMethod(double a) {
-
+        return super.newtonRaphsonMethod(a);
     }
 
     @Override
     public String taylorPolynomial(int n) {
-        return newFunction.taylorPolynomial(n);
+        return super.taylorPolynomial(n);
     }
 
     @Override

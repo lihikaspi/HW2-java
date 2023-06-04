@@ -1,10 +1,16 @@
-public class MultiSum extends Function {
+public class MultiSum extends Polynomial {
+    // TODO: maybe was not supposed to inherit from Polynomial ??
     private final Function[] functions;
 
     public MultiSum(Function... functions) {
         super();
         this.functions = functions;
+        addFunctions();
         turnToString();
+    }
+
+    private void addFunctions() {
+        super.setCoefficients(Polynomial.add(functions));
     }
 
     private void turnToString() {
@@ -36,27 +42,27 @@ public class MultiSum extends Function {
 
     @Override
     public double bisectionMethod(double a, double b, double epsilon) {
-
+        return super.bisectionMethod(a, b, epsilon);
     }
 
     @Override
     public double bisectionMethod(double a, double b) {
-
+        return super.bisectionMethod(a, b);
     }
 
     @Override
     public double newtonRaphsonMethod(double a, double epsilon) {
-
+        return super.newtonRaphsonMethod(a, epsilon);
     }
 
     @Override
     public double newtonRaphsonMethod(double a) {
-
+        return super.newtonRaphsonMethod(a);
     }
 
     @Override
     public String taylorPolynomial(int n) {
-
+        return super.taylorPolynomial(n);
     }
 
     @Override

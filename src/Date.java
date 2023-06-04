@@ -12,17 +12,50 @@ public class Date {
         else this.day = day;
     }
 
+    public void setDay(int day) {
+        if (day < 1 || day > 31) this.day = 1;
+        else this.day = day;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
     public void setMonth(int month) {
         if (month < 1 || month > 12) this.month = 1;
         else this.month = month;
     }
 
+    public int getMonth() {
+        return month;
+    }
+
+    public void setYear(int year) {
+        if (year > 3999 || year < -3999) this.year = 0;
+        else this.year = year;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
     @Override
     public String toString() {
+        String str;
         if (day < 10) {
+            str = "0" + day;
             if (month < 10) {
-                return "0" + day + "/0" + month + "/" + year;
-            } else return "0" + day + "/" + month + "/" + year;
+                str += "/0" + month;
+                if (year < 0) {
+                    if (year > -10) return str += "/-000" + Math.abs(year);
+                    else if (year > -100) return str += "/-00" + Math.abs(year);
+                    else if (year > -1000) return str += "/-0" + Math.abs(year);
+                    else return str += "/-" + Math.abs(year);
+                } else if (year < 10) return str += "/000" + year;
+                else if (year < 100) return str += "/00" + year;
+                else if (year < 1000) return str += "/0" + year;
+                else return str += "/" + year;
+            } else return str += "/" + month + "/" + year;
         } else return day + "/" + month + "/" + year;
     }
 
@@ -31,7 +64,9 @@ public class Date {
         if (obj == null) return false;
         if (!(obj instanceof Date))
             return false;
-        return hashCode() == ((Date)obj).hashCode();
+        Date date = (Date)obj;
+        return day == date.day && month == date.month && year == date.year
+                && toString().length() == date.toString().length() && hashCode() == date.hashCode();
     }
 
     @Override

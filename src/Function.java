@@ -63,7 +63,7 @@ public abstract class Function {
         Function derivativeI = this.derivative;
         coefficients[0] = valueAt(0);
         for (int i = 1; i <= n; i++) {
-            double factorial = factorial(n);
+            double factorial = factorial(i);
             coefficients[i] = derivativeI.valueAt(0) / factorial;
             derivativeI = derivativeI.getDerivative();
         }

@@ -4,8 +4,12 @@ public class Polynomial extends Function{
     private double[] coefficients;
     private Polynomial derivative;
 
-    public Polynomial(double...  coefficients) {
-        this.coefficients = coefficients;
+    public Polynomial(double co1, double...  coefficients) {
+        this.coefficients = new double[coefficients.length+1];
+        this.coefficients[0] = co1;
+        for (int i = 0; i < coefficients.length; i++) {
+            this.coefficients[i+1] = coefficients[i];
+        }
         turnToString();
     }
 
@@ -61,7 +65,7 @@ public class Polynomial extends Function{
 
     @Override
     public double valueAt(double x) {
-        int sum = 0;
+        double sum = 0;
         for (int i = 0; i < coefficients.length; i++) {
             sum += coefficients[i] * Math.pow(x, i);
         }
@@ -70,11 +74,21 @@ public class Polynomial extends Function{
 
     @Override
     public String derivative() {
-        double[] newCoefficients = new double[coefficients.length-1];
-        for (int i = 1; i < coefficients.length; i++) {
-            newCoefficients[i-1] = coefficients[i] * i;
+        if (coefficients.length == 1) {
+            derivative = new Polynomial(0);
+            return derivative.toString();
         }
-        derivative =  new Polynomial(newCoefficients);
+        double[] newCoefficients;
+        double co1 = 0;
+        if (coefficients.length != 1) {
+            newCoefficients = new double[coefficients.length - 2];
+            co1 = coefficients[1];
+        }
+        else newCoefficients = new double[0];
+        for (int i = 2; i < coefficients.length; i++) {
+            newCoefficients[i-2] = coefficients[i] * i;
+        }
+        derivative =  new Polynomial(co1, newCoefficients);
         super.setDerivative(this.derivative);
         return derivative.toString();
     }
@@ -101,13 +115,20 @@ public class Polynomial extends Function{
 
     @Override
     public String taylorPolynomial(int n) {
-        if (n == 0) return coefficients[0] + "";
-        if (n >= coefficients.length) return toString();
-        double[] newCoefficients = new double[n+1];
-        for (int i = 0; i <= n; i++) {
-            newCoefficients[i] = coefficients[i];
+        if (n == 0) {
+            if (coefficients[0]%1 == 0){
+                return "("+(int)coefficients[0] + ")";
+            } else {
+                return "(" + coefficients[0] + ")";
+            }
         }
-        return new Polynomial(newCoefficients).toString();
+        if (n >= coefficients.length) return toString();
+        double[] newCoefficients = new double[n];
+        double co1 = coefficients[0];
+        for (int i = 1; i <= n; i++) {
+            newCoefficients[i-1] = coefficients[i];
+        }
+        return new Polynomial(co1, newCoefficients).toString();
     }
 
     @Override

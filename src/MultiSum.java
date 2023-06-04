@@ -22,7 +22,7 @@ public class MultiSum extends Function {
 
     @Override
     public double valueAt(double x) {
-        int sum = 0;
+        double sum = 0;
         for (int i = 0; i < functions.length; i++) {
             sum += functions[i].valueAt(x);
         }
@@ -36,6 +36,10 @@ public class MultiSum extends Function {
         for (int i = 0; i < functions.length; i++) {
             derivative += functions[i].derivative();
             derivatives[i] = functions[i].getDerivative();
+
+            if (i != functions.length -1){
+                derivative += " + ";
+            }
         }
         super.setDerivative(new MultiSum(derivatives[0], derivatives[1], derivatives));
         return derivative + ")";

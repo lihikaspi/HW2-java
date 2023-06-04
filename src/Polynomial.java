@@ -16,10 +16,6 @@ public class Polynomial extends Function{
         // TODO: build copy constructor
     }
 
-    public void setCoefficients(Polynomial polynomial) {
-        this.coefficients = polynomial.getCoefficients();
-    }
-
     @Override
     public void setFunction(String function) {
         super.setFunction(function);
@@ -43,14 +39,16 @@ public class Polynomial extends Function{
             if ((coefficients[i] == 1 || coefficients[i] == -1) && i != 0) temp = "x^" + i;
             if (coefficients[i] % 1 == 0) {
                 if (i == 0) temp = Math.abs((int)coefficients[i]) + "";
+                else if (i == 1) temp = Math.abs((int)coefficients[i]) + "x";
                 else temp = Math.abs((int)coefficients[i]) + "x^" + i;
             } else {
                 if (i == 0) temp = Math.abs(coefficients[i]) + "";
+                else if (i == 1) temp = Math.abs(coefficients[i]) + "x";
                 else temp = Math.abs(coefficients[i]) + "x^" + i;
             }
             // build the function string
             if (!sign) {
-                func += "- " + temp;
+                func += "-" + temp;
             } else {
                 if (i == 0) func += temp;
                 else func += "+ " + temp;

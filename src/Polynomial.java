@@ -2,10 +2,6 @@ public class Polynomial extends Function{
     private double[] coefficients;
     private Polynomial derivative;
 
-    public Polynomial() {
-        coefficients = null;
-    }
-
     public Polynomial(double...  coefficients) {
         super();
         this.coefficients = coefficients;
@@ -36,7 +32,11 @@ public class Polynomial extends Function{
             // find the different powers
             if (coefficients[i] == 0) continue;
             boolean sign  = coefficients[i] > 0;
-            if ((coefficients[i] == 1 || coefficients[i] == -1) && i != 0) temp = "x^" + i;
+            if ((coefficients[i] == 1.0 || coefficients[i] == -1.0) && i != 0) {
+                if (i == 0) temp = 1 + "";
+                if (i == 1) temp = "x";
+                else temp = "x^" + i;
+            }
             if (coefficients[i] % 1 == 0) {
                 if (i == 0) temp = Math.abs((int)coefficients[i]) + "";
                 else if (i == 1) temp = Math.abs((int)coefficients[i]) + "x";
@@ -48,10 +48,11 @@ public class Polynomial extends Function{
             }
             // build the function string
             if (!sign) {
-                func += "-" + temp;
+                if (func.equals("")) func += "-" + temp;
+                else func += " -" + temp;
             } else {
                 if (i == 0) func += temp;
-                else func += "+ " + temp;
+                else func += " + " + temp;
             }
         }
         super.setFunction(func);

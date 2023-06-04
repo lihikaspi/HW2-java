@@ -2,7 +2,6 @@ public class Constant extends Function implements Operations {
     private final double value;
 
     public Constant(double value) {
-        super(); // need to do this???
         this.value = value;
         super.setFunction(Double.toString(value));
     }
@@ -55,6 +54,7 @@ public class Constant extends Function implements Operations {
 
     @Override
     public String derivative() {
+        super.setDerivative(new Constant(0));
         return "0";
     }
 

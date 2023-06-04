@@ -15,9 +15,17 @@ public class DateTime extends Date {
         else this.hour = hour;
     }
 
+    public int getHour() {
+        return hour;
+    }
+
     public void setMinute(int minute) {
         if (minute < 0 || minute > 59) this.minute = 0;
         else this.minute = minute;
+    }
+
+    public int getMinute() {
+        return minute;
     }
 
     @Override

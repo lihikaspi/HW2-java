@@ -25,7 +25,7 @@ public abstract class Function {
     public abstract double newtonRaphsonMethod(double a, double epsilon);
     public abstract double newtonRaphsonMethod(double a);
     public String taylorPolynomial(int n) {
-        double[] coefficients = new double[n];
+        double[] coefficients = new double[n+1];
         Function derivativeI = this.derivative;
         coefficients[0] = valueAt(0);
         for (int i = 1; i <= n; i++) {

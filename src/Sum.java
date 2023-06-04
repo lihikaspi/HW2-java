@@ -31,6 +31,7 @@ public class Sum extends Polynomial {
 
     @Override
     public String derivative() {
+        super.setDerivative(new Sum(f.getDerivative(), g.getDerivative()));
         return "(" + f.derivative() + " + " + g.derivative() + ")";
     }
 

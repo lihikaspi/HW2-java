@@ -1,4 +1,5 @@
 public class Negation extends Polynomial {
+    // TODO: maybe shouldn't extend Polynomial ??? what about quotient ???S
     private final Function function;
 
     public Negation(Function function) {

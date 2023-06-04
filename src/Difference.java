@@ -1,6 +1,7 @@
 public class Difference extends Polynomial {
-    private Function f;
-    private Function g;
+    // TODO: maybe shouldn't extend Polynomial ??? what about quotient ???
+    private final Function f;
+    private final Function g;
 
     /**
      * constructor - assuming the difference is f-g
@@ -36,6 +37,7 @@ public class Difference extends Polynomial {
 
     @Override
     public String derivative() {
+        super.setDerivative(new Difference(f.getDerivative(), g.getDerivative()));
         return "(" + f.derivative() + " - " + g.derivative() + ")";
     }
 

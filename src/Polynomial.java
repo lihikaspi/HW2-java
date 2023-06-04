@@ -154,6 +154,7 @@ public class Polynomial extends Function implements Operations {
             newCoefficients[i-1] = coefficients[i] * i;
         }
         derivative =  new Polynomial(newCoefficients);
+        super.setDerivative(this.derivative);
         return derivative.toString();
     }
 
@@ -207,8 +208,8 @@ public class Polynomial extends Function implements Operations {
     public String taylorPolynomial(int n) {
         if (n == 0) return coefficients[0] + "";
         if (n >= coefficients.length) return toString();
-        double[] newCoefficients = new double[n];
-        for (int i = 0; i < n; i++) {
+        double[] newCoefficients = new double[n+1];
+        for (int i = 0; i <= n; i++) {
             newCoefficients[i] = coefficients[i];
         }
         return new Polynomial(newCoefficients).toString();

@@ -1,18 +1,10 @@
-public class Negation extends Polynomial {
-    // TODO: maybe shouldn't extend Polynomial ??? what about quotient ???S
+public class Negation extends Function {
     private final Function function;
 
     public Negation(Function function) {
         super();
         this.function = function;
-        negFunction();
         turnToString();
-    }
-
-    private void negFunction() {
-        if (function.getClass().getSimpleName().equals("Polynomial")) {
-            super.setCoefficients(((Polynomial)function).multiply(new Constant(-1)));
-        } else super.setCoefficients(((Constant)function).multiply(new Constant(-1)));
     }
 
     private void turnToString() {
@@ -21,7 +13,7 @@ public class Negation extends Polynomial {
 
     @Override
     public double valueAt(double x) {
-        return super.valueAt(x);
+        return -(function.valueAt(x));
     }
 
     @Override

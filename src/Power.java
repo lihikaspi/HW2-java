@@ -16,7 +16,6 @@ public class Power extends Function {
         } else if (power == 2) this.newFunction = new Product(function, function);
         else if (power == 1) this.newFunction = new Polynomial(function);
         else if (power == 0) this.newFunction = new Constant(1);
-        // TODO: negative powers
     }
 
     private void turnToString() {

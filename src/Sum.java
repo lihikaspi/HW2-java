@@ -1,4 +1,4 @@
-public class Sum extends Polynomial {
+public class Sum extends Function {
     private final Function f;
     private final Function g;
 
@@ -14,19 +14,9 @@ public class Sum extends Polynomial {
         super.setFunction(f.toString() + " + " + g.toString());
     }
 
-    private void addFunctions() {
-        if (f.getClass().getSimpleName().equals("Polynomial")) {
-            if (g.getClass().getSimpleName().equals("Polynomial"))
-                super.setCoefficients(((Polynomial)f).add((Polynomial)g));
-            else super.setCoefficients(((Polynomial)f).add((Constant) g));
-        } else if (g.getClass().getSimpleName().equals("Polynomial"))
-            super.setCoefficients(((Constant)f).add((Polynomial)g));
-        else super.setCoefficients(((Constant)f).add((Constant) g));
-    }
-
     @Override
     public double valueAt(double x) {
-        return super.valueAt(x);
+        return f.valueAt(x) + g.valueAt(x);
     }
 
     @Override

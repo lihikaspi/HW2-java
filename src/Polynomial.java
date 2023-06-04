@@ -12,6 +12,10 @@ public class Polynomial extends Function implements Operations {
         turnToString();
     }
 
+    public Polynomial(Function function) {
+        // TODO: build copy constructor
+    }
+
     public void setCoefficients(Polynomial polynomial) {
         this.coefficients = polynomial.getCoefficients();
     }

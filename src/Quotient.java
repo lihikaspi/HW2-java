@@ -3,10 +3,16 @@ public class Quotient extends Function {
     private final Function g;
 
     public Quotient(Function f, Function g) {
+        // f / g
         super();
         this.f = f;
         this.g = g;
         turnToString();
+    }
+
+    @Override
+    public void setDerivative(Function derivative) {
+        super.setDerivative(derivative);
     }
 
     private void turnToString() {
@@ -20,48 +26,37 @@ public class Quotient extends Function {
 
     @Override
     public String derivative() {
+        Power bottom = new Power(g, 2);
+        super.setDerivative(new Quotient(new Difference(
+                new Product(f.getDerivative(), g), new Product(f, g.getDerivative())), bottom));
         return "(((" + f.derivative() + " * " + g.toString() +
                 ") - (" + f.toString() + " * " + g.derivative() + ")) / (" +
-                new Power(g, 2).toString() + ")";
+                bottom.toString() + ")"; // TODO: why toString() not necessary???
     }
 
     @Override
     public double bisectionMethod(double a, double b, double epsilon) {
-
+        return f.bisectionMethod(a, b, epsilon);
     }
 
     @Override
     public double bisectionMethod(double a, double b) {
-
+        return f.bisectionMethod(a, b);
     }
 
     @Override
     public double newtonRaphsonMethod(double a, double epsilon) {
-
+        return f.newtonRaphsonMethod(a, epsilon);
     }
 
     @Override
     public double newtonRaphsonMethod(double a) {
-
+        return f.newtonRaphsonMethod(a);
     }
 
     @Override
     public String taylorPolynomial(int n) {
-        double[] coefficients = new double[n];
-        coefficients[0] = valueAt(0);
-        for (int i = 1; i <= n; i++) {
-            double factorial = factorial(n);
-            // coefficients[i] = derivative(number i).valueAt(0) / factorial;
-        }
-        return new Polynomial(coefficients).toString();
-    }
-
-    private int factorial(int n) {
-        int factorial = 1;
-        for (int i = 1; i <= n; i++) {
-            factorial *= i;
-        }
-        return factorial;
+        return super.taylorPolynomial(n);
     }
 
     @Override

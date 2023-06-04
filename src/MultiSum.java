@@ -2,11 +2,10 @@ public class MultiSum extends Function {
     private final Function[] functions;
 
     public MultiSum(Function func1, Function func2, Function... funcs) {
-        super();
         this.functions = new Function[funcs.length+2];
         this.functions[0] = func1;
         this.functions[1] = func2;
-        for (int i = 0; i < this.functions.length; i++) {
+        for (int i = 0; i < funcs.length; i++) {
             this.functions[i+2] = funcs[i];
         }
         turnToString();

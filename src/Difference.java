@@ -25,6 +25,8 @@ public class Difference extends Function {
 
     @Override
     public String derivative() {
+        f.derivative();
+        g.derivative();
         super.setDerivative(new Difference(f.getDerivative(), g.getDerivative()));
         return "(" + f.derivative() + " - " + g.derivative() + ")";
     }

@@ -10,11 +10,6 @@ public class Quotient extends Function {
         turnToString();
     }
 
-    @Override
-    public void setDerivative(Function derivative) {
-        super.setDerivative(derivative);
-    }
-
     private void turnToString() {
         super.setFunction(f.toString() + " / " + g.toString());
     }
@@ -26,11 +21,13 @@ public class Quotient extends Function {
 
     @Override
     public String derivative() {
+        f.derivative();
+        g.derivative();
         Power bottom = new Power(g, 2);
         super.setDerivative(new Quotient(new Difference(
-                new Product(f.getDerivative(), g), new Product(f, g.getDerivative())), bottom));
+                new Product(f.getDerivative(), g), new Product(g.getDerivative(), f)), bottom));
         return "(((" + f.derivative() + " * " + g.toString() +
-                ") - (" + f.toString() + " * " + g.derivative() + ")) / (" +
+                ") - (" + g.derivative() + " * " + f.toString() + ")) / " +
                 bottom.toString() + ")";
     }
 

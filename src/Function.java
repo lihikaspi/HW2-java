@@ -65,6 +65,7 @@ public abstract class Function {
         for (int i = 1; i <= n; i++) {
             double factorial = factorial(i);
             coefficients[i] = derivativeI.valueAt(0) / factorial;
+            derivativeI.derivative();
             derivativeI = derivativeI.getDerivative();
         }
         return new Polynomial(coefficients).toString();

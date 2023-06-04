@@ -32,16 +32,34 @@ public class MultiProduct extends Function {
 
     @Override
     public String derivative() {
-
+        MultiProduct[] mp = new MultiProduct[functions.length-2];
+        MultiProduct mp1 = null;
+        MultiProduct mp2 = null;
         String derivative = "(";
+        int r = 0;
         for (int i = 0; i < functions.length; i++) {
             derivative += functions[i].derivative();
+            Function[] fs = new Function[functions.length-1];
+            int k = 0;
             for (int j = 0; j < functions.length; j++) {
                 if (i == j) continue;
                 derivative += " * " + functions[j].toString();
+                fs[k] = functions[j];
+                k++;
             }
             derivative += " + ";
+            Function[] new_fs = new Function[functions.length-2];
+            for (int t = 0; t < new_fs.length; t++) {
+                new_fs[t] = fs[t+1];
+            }
+            if (i == 0) mp1 = new MultiProduct(functions[i].getDerivative(), fs[0], new_fs);
+            else if (i == 1) mp2 = new MultiProduct(functions[i].getDerivative(), fs[0], fs);
+            else {
+                mp[r] = new MultiProduct(functions[i].getDerivative(), fs[0], fs);
+                r++;
+            }
         }
+        super.setDerivative(new MultiSum(mp1, mp2, mp));
         return derivative + ")";
     }
 

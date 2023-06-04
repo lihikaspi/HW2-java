@@ -1,9 +1,10 @@
+import java.util.concurrent.ExecutionException;
+
 public class Polynomial extends Function{
     private double[] coefficients;
     private Polynomial derivative;
 
     public Polynomial(double...  coefficients) {
-        super();
         this.coefficients = coefficients;
         turnToString();
     }
@@ -37,7 +38,7 @@ public class Polynomial extends Function{
                 if (i == 1) temp = "x";
                 else temp = "x^" + i;
             }
-            if (coefficients[i] % 1 == 0) {
+            else if (coefficients[i] % 1 == 0) {
                 if (i == 0) temp = Math.abs((int)coefficients[i]) + "";
                 else if (i == 1) temp = Math.abs((int)coefficients[i]) + "x";
                 else temp = Math.abs((int)coefficients[i]) + "x^" + i;
@@ -49,9 +50,9 @@ public class Polynomial extends Function{
             // build the function string
             if (!sign) {
                 if (func.equals("")) func += "-" + temp;
-                else func += " -" + temp;
+                else func += " - " + temp;
             } else {
-                if (i == 0) func += temp;
+                if (func.equals("")) func += temp;
                 else func += " + " + temp;
             }
         }

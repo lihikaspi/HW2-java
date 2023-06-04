@@ -20,6 +20,10 @@ public class Sum extends Function {
 
     @Override
     public String derivative() {
+        if (f.getClass().getSimpleName().equals("Polynomial"))
+            if (((Polynomial)f).getCoefficients().length == 0) throw new RuntimeException(f.toString());
+        if (g.getClass().getSimpleName().equals("Polynomial"))
+                if (((Polynomial)g).getCoefficients().length == 0) throw new RuntimeException(g.toString());
         String derivative = "(" + f.derivative() + " + " + g.derivative() + ")";
         super.setDerivative(new Sum(f.getDerivative(), g.getDerivative()));
         return derivative;

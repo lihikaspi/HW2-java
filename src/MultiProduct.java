@@ -1,5 +1,5 @@
 public class MultiProduct extends Function {
-    private Function[] functions;
+    private final Function[] functions;
 
     public MultiProduct(Function... functions) {
         super();
@@ -10,11 +10,26 @@ public class MultiProduct extends Function {
     @Override
     public double valueAt(double x) {
 
+        double sum = 0;
+        for (Function function : functions) {
+            sum *= function.valueAt(x);
+        }
+        return sum;
     }
 
     @Override
     public String derivative() {
 
+        String derivative = "(";
+        for (int i = 0; i < functions.length; i++) {
+            derivative += functions[i].derivative();
+            for (int j = 0; j < functions.length; j++) {
+                if (i == j) continue;
+                derivative += " * " + functions[j].toString();
+            }
+            derivative += " + ";
+        }
+        return derivative + ")";
     }
 
     @Override
@@ -39,7 +54,7 @@ public class MultiProduct extends Function {
 
     @Override
     public String taylorPolynomial(int n) {
-
+        return super.taylorPolynomial(n);
     }
 
     @Override

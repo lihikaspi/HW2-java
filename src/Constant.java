@@ -1,4 +1,4 @@
-public class Constant extends Function implements Operations {
+public class Constant extends Function {
     private final double value;
 
     public Constant(double value) {
@@ -8,43 +8,6 @@ public class Constant extends Function implements Operations {
 
     public double getValue() {
         return this.value;
-    }
-
-    @Override
-    public Polynomial add(Polynomial function) {
-        // constant + polynomial
-        return function.add(this);
-    }
-
-    @Override
-    public Polynomial add(Constant constant) {
-        // constant + constant
-        return new Polynomial(this.value + constant.getValue());
-    }
-
-    @Override
-    public Polynomial multiply(Polynomial function) {
-        // constant * polynomial
-        return function.multiply(this);
-    }
-
-    @Override
-    public Polynomial multiply(Constant constant) {
-        // constant * constant
-        return new Polynomial(this.value * constant.getValue());
-    }
-
-    @Override
-    public Polynomial subtract(Polynomial function) {
-        // constant - polynomial
-        return function.subtract(this, false);
-    }
-
-    @Override
-    public Polynomial subtract(Constant constant, boolean first) {
-        // constant - constant
-        // ignore first
-        return new Polynomial(this.value - constant.getValue());
     }
 
     @Override

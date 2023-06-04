@@ -1,4 +1,4 @@
-public class Polynomial extends Function implements Operations {
+public class Polynomial extends Function{
     private double[] coefficients;
     private Polynomial derivative;
 
@@ -57,85 +57,6 @@ public class Polynomial extends Function implements Operations {
             }
         }
         super.setFunction(func);
-    }
-
-    @Override
-    public Polynomial add(Polynomial function) {
-        // polynomial + polynomial
-        double[] newCoefficients = new double[coefficients.length];
-        double[] funcCoefficients = function.getCoefficients();
-        for (int i = 1; i < coefficients.length; i++)
-            newCoefficients[i] = coefficients[i] + funcCoefficients[i];
-        return new Polynomial(newCoefficients);
-    }
-
-    public static Polynomial add(Function... functions) {
-        double[][] funcCoefficients = new double[functions.length][];
-        int maxLen = 0;
-        for (int i = 0; i < functions.length; i++) {
-            if (functions[i].getClass().getSimpleName().equals("Polynomial"))
-                funcCoefficients[i] = ((Polynomial)functions[i]).getCoefficients();
-            else  {
-                funcCoefficients[i] = new double[1];
-                funcCoefficients[i][0] = ((Constant)functions[i]).getValue();
-            }
-            if (funcCoefficients[i].length > maxLen) maxLen = funcCoefficients[i].length;
-        }
-        double[] newCoefficients = new double[maxLen];
-        for (int i = 0; i < functions.length; i++) {
-            for (int j = 0; i < funcCoefficients[i].length; i++) {
-                newCoefficients[i] += funcCoefficients[i][j];
-            }
-        }
-        return new Polynomial(newCoefficients);
-    }
-
-    @Override
-    public Polynomial add(Constant constant) {
-        // polynomial + constant
-        double[] newCoefficients = new double[coefficients.length];
-        newCoefficients[0] = coefficients[0] + constant.getValue();
-        for (int i = 1; i < coefficients.length; i++)
-            newCoefficients[i] = coefficients[i];
-        return new Polynomial(newCoefficients);
-    }
-
-    @Override
-    public Polynomial multiply(Polynomial function) {
-        // polynomial * polynomial
-        // TODO
-        MultiProduct mp = new MultiProduct(this, function);
-        return null;
-    }
-
-    @Override
-    public Polynomial multiply(Constant constant) {
-        // polynomial * constant
-        double[] newCoefficients = new double[coefficients.length];
-        for (int i = 0; i < coefficients.length; i++)
-            newCoefficients[i] = coefficients[i] * constant.getValue();
-        return new Polynomial(newCoefficients);
-    }
-
-    @Override
-    public Polynomial subtract(Polynomial function) {
-        // polynomial - polynomial
-        double[] newCoefficients = new double[coefficients.length];
-        double[] funcCoefficients = function.getCoefficients();
-        for (int i = 1; i < coefficients.length; i++)
-            newCoefficients[i] = coefficients[i] - funcCoefficients[i];
-        return new Polynomial(newCoefficients);
-    }
-    @Override
-    public Polynomial subtract(Constant constant, boolean first) {
-        // first == true --> polynomial - constant
-        // first == false --> constant - polynomial
-        double[] newCoefficients = new double[coefficients.length];
-        if (first) newCoefficients[0] = coefficients[0] - constant.getValue();
-        else newCoefficients[0] = constant.getValue() - coefficients[0];
-        for (int i = 1; i < coefficients.length; i++)
-            newCoefficients[i] = coefficients[i];
-        return new Polynomial(newCoefficients);
     }
 
     @Override

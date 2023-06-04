@@ -3,11 +3,8 @@ public class Constant extends Function {
 
     public Constant(double value) {
         this.value = value;
-        super.setFunction(Double.toString(value));
-    }
-
-    public double getValue() {
-        return this.value;
+        if (value % 1 == 0) super.setFunction(Integer.toString((int)value));
+        else super.setFunction(Double.toString(value));
     }
 
     @Override
@@ -18,7 +15,7 @@ public class Constant extends Function {
     @Override
     public String derivative() {
         super.setDerivative(new Constant(0));
-        return "0";
+        return "(0)";
     }
 
     // what to return ???????

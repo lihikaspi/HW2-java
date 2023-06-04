@@ -41,21 +41,28 @@ public class Date {
 
     @Override
     public String toString() {
-        String str;
         if (day < 10) {
-            str = "0" + day;
             if (month < 10) {
-                str += "/0" + month;
                 if (year < 0) {
-                    if (year > -10) return str += "/-000" + Math.abs(year);
-                    else if (year > -100) return str += "/-00" + Math.abs(year);
-                    else if (year > -1000) return str += "/-0" + Math.abs(year);
-                    else return str += "/-" + Math.abs(year);
-                } else if (year < 10) return str += "/000" + year;
-                else if (year < 100) return str += "/00" + year;
-                else if (year < 1000) return str += "/0" + year;
-                else return str += "/" + year;
-            } else return str += "/" + month + "/" + year;
+                    if (year > -10) return "0" + day + "/0" + month + "/-000" + Math.abs(year);
+                    else if (year > -100) return  "0" + day + "/0" + month + "/-00" + Math.abs(year);
+                    else if (year > -1000) return "0" + day + "/0" + month + "/-0" + Math.abs(year);
+                    else return "0" + day + "/0" + month + "/-" + Math.abs(year);
+                } else if (year < 10) return "0" + day + "/0" + month + "/000" + year;
+                else if (year < 100) return "0" + day + "/0" + month + "/00" + year;
+                else if (year < 1000) return "0" + day + "/0" + month + "/0" + year;
+                else return "0" + day + "/0" + month + "/" + year;
+            } else return "0" + day + "/" + month + "/" + year;
+        } else if (month < 10) {
+            if (year < 0) {
+                if (year > -10) return day + "/0" + month + "/-000" + Math.abs(year);
+                else if (year > -100) return day + "/0" + month + "/-00" + Math.abs(year);
+                else if (year > -1000) return day + "/0" + month + "/-0" + Math.abs(year);
+                else return day + "/0" + month + "/-" + Math.abs(year);
+            } else if (year < 10) return day + "/0" + month + "/000" + year;
+            else if (year < 100) return day + "/0" + month + "/00" + year;
+            else if (year < 1000) return day + "/0" + month + "/0" + year;
+            else return day + "/0" + month + "/" + year;
         } else return day + "/" + month + "/" + year;
     }
 

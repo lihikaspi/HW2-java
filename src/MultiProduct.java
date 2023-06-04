@@ -23,7 +23,6 @@ public class MultiProduct extends Function {
 
     @Override
     public double valueAt(double x) {
-
         double sum = 0;
         for (Function function : functions) {
             sum *= function.valueAt(x);

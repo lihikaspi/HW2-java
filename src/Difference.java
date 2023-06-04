@@ -1,5 +1,4 @@
-public class Difference extends Polynomial {
-    // TODO: maybe shouldn't extend Polynomial ??? what about quotient ???
+public class Difference extends Function {
     private final Function f;
     private final Function g;
 
@@ -12,18 +11,7 @@ public class Difference extends Polynomial {
         super();
         this.f = f;
         this.g = g;
-        subtractFunctions();
         turnToString();
-    }
-
-    private void subtractFunctions() {
-        if (f.getClass().getSimpleName().equals("Polynomial")) {
-            if (g.getClass().getSimpleName().equals("Polynomial"))
-                super.setCoefficients(((Polynomial)f).subtract((Polynomial)g));
-            else super.setCoefficients(((Polynomial)f).subtract((Constant) g, true));
-        } else if (g.getClass().getSimpleName().equals("Polynomial"))
-            super.setCoefficients(((Constant)f).subtract((Polynomial)g));
-        else super.setCoefficients(((Constant)f).subtract((Constant) g, true));
     }
 
     private void turnToString() {
@@ -32,7 +20,7 @@ public class Difference extends Polynomial {
 
     @Override
     public double valueAt(double x) {
-        return super.valueAt(x);
+        return f.valueAt(x) - g.valueAt(x);
     }
 
     @Override

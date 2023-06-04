@@ -1,16 +1,15 @@
-public class MultiSum extends Polynomial {
-    // TODO: maybe was not supposed to inherit from Polynomial ??
+public class MultiSum extends Function {
     private final Function[] functions;
 
-    public MultiSum(Function... functions) {
+    public MultiSum(Function func1, Function func2, Function... funcs) {
         super();
-        this.functions = functions;
-        addFunctions();
+        this.functions = new Function[funcs.length+2];
+        this.functions[0] = func1;
+        this.functions[1] = func2;
+        for (int i = 0; i < this.functions.length; i++) {
+            this.functions[i+2] = funcs[i];
+        }
         turnToString();
-    }
-
-    private void addFunctions() {
-        super.setCoefficients(Polynomial.add(functions));
     }
 
     private void turnToString() {
@@ -33,10 +32,13 @@ public class MultiSum extends Polynomial {
 
     @Override
     public String derivative() {
+        Function[] derivatives = new Function[functions.length];
         String derivative = "(";
         for (int i = 0; i < functions.length; i++) {
             derivative += functions[i].derivative();
+            derivatives[i] = functions[i].getDerivative();
         }
+        super.setDerivative(new MultiSum(derivatives[0], derivatives[1], derivatives));
         return derivative + ")";
     }
 

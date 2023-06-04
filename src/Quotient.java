@@ -31,7 +31,7 @@ public class Quotient extends Function {
                 new Product(f.getDerivative(), g), new Product(f, g.getDerivative())), bottom));
         return "(((" + f.derivative() + " * " + g.toString() +
                 ") - (" + f.toString() + " * " + g.derivative() + ")) / (" +
-                bottom.toString() + ")"; // TODO: why toString() not necessary???
+                bottom.toString() + ")";
     }
 
     @Override

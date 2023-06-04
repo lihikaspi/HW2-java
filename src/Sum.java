@@ -6,7 +6,6 @@ public class Sum extends Function {
         super();
         this.f = f;
         this.g = g;
-        addFunctions();
         turnToString();
     }
 

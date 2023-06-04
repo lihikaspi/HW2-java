@@ -25,27 +25,27 @@ public class Product extends Function{
 
     @Override
     public double bisectionMethod(double a, double b, double epsilon) {
-
+        return super.bisectionMethod(a, b, epsilon);
     }
 
     @Override
     public double bisectionMethod(double a, double b) {
-
+        return super.bisectionMethod(a, b);
     }
 
     @Override
     public double newtonRaphsonMethod(double a, double epsilon) {
-
+        return super.newtonRaphsonMethod(a, epsilon);
     }
 
     @Override
     public double newtonRaphsonMethod(double a) {
-
+        return super.newtonRaphsonMethod(a);
     }
 
     @Override
     public String taylorPolynomial(int n) {
-
+        return super.taylorPolynomial(n);
     }
 
     @Override

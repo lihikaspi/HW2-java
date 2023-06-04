@@ -12,7 +12,7 @@ public class Power extends Function {
             Function[] functions = new Function[power];
             for (int i = 0; i < power; i++)
                 functions[i] = function;
-            this.newFunction = new MultiProduct(functions);
+            this.newFunction = new MultiProduct(functions[0], functions[1], functions);
         } else if (power == 2) this.newFunction = new Product(function, function);
         else if (power == 1) this.newFunction = new Polynomial(function);
         else if (power == 0) this.newFunction = new Constant(1);

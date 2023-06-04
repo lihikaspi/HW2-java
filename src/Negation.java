@@ -18,6 +18,7 @@ public class Negation extends Function {
 
     @Override
     public String derivative() {
+        super.setDerivative(new Product(new Constant(-1), function));
         return "(-" + function.derivative() + ")";
     }
 

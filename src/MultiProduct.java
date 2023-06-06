@@ -8,16 +8,15 @@ public class MultiProduct extends Function {
         for (int i = 0; i < funcs.length; i++) {
             this.functions[i+2] = funcs[i];
         }
-        turnToString();
     }
 
-    public void turnToString() {
+    public String turnToString() {
         String func = "";
         for (int i = 0; i < functions.length; i++) {
             func += functions[i].toString();
             if (i != functions.length-1) func += " * ";
         }
-        function = func;
+        return func;
     }
 
     @Override
@@ -83,6 +82,6 @@ public class MultiProduct extends Function {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "(" + turnToString() + ")";
     }
 }

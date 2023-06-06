@@ -7,7 +7,6 @@ public class Polynomial extends Function{
         for (int i = 0; i < coefficients.length; i++) {
             this.coefficients[i+1] = coefficients[i];
         }
-        turnToString();
     }
 
     private boolean emptyPoly(){
@@ -17,12 +16,11 @@ public class Polynomial extends Function{
         return true;
     }
 
-    private void turnToString() {
+    private String turnToString() {
         String func = "";
         String temp;
         if (emptyPoly()) {
-            super.function = "0";
-            return;
+            return "0";
         }
         for (int i = 0; i < coefficients.length; i++) {
             // find the different powers
@@ -51,7 +49,7 @@ public class Polynomial extends Function{
                 else func += " + " + temp;
             }
         }
-        super.function = func;
+        return func;
     }
 
     @Override
@@ -112,6 +110,6 @@ public class Polynomial extends Function{
 
     @Override
     public String toString() {
-        return super.toString();
+        return "(" + turnToString() + ")";
     }
 }

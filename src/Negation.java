@@ -3,11 +3,10 @@ public class Negation extends Function {
 
     public Negation(Function function) {
         this.function = function;
-        turnToString();
     }
 
-    private void turnToString() {
-        super.function = "-" + function.toString();
+    private String turnToString() {
+        return "-" + function.toString();
     }
 
     @Override
@@ -47,6 +46,6 @@ public class Negation extends Function {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "(" + turnToString() + ")";
     }
 }

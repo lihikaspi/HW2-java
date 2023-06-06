@@ -5,11 +5,10 @@ public class Sum extends Function {
     public Sum(Function f, Function g) {
         this.f = f;
         this.g = g;
-        turnToString();
     }
 
-    private void turnToString() {
-        super.function = f.toString() + " + " + g.toString();
+    private String turnToString() {
+        return f.toString() + " + " + g.toString();
     }
 
     @Override
@@ -49,6 +48,6 @@ public class Sum extends Function {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "(" + turnToString() + ")";
     }
 }

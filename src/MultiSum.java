@@ -8,16 +8,15 @@ public class MultiSum extends Function {
         for (int i = 0; i < funcs.length; i++) {
             this.functions[i+2] = funcs[i];
         }
-        turnToString();
     }
 
-    private void turnToString() {
+    private String turnToString() {
         String function = "";
         for (int i = 0; i < functions.length; i++) {
             function += functions[i].toString();
             if (i != functions.length-1) function += " + ";
         }
-        super.function = function;
+        return function;
     }
 
     @Override
@@ -67,6 +66,6 @@ public class MultiSum extends Function {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "(" + turnToString() + ")";
     }
 }

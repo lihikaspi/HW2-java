@@ -1,8 +1,5 @@
 public abstract class Function {
-    protected String function;
-
     public Function() {
-        this.function = null;
     }
 
     public abstract double valueAt(double x);
@@ -12,24 +9,26 @@ public abstract class Function {
         double right = b;
         while(right - left > epsilon) {
             double mid = (left + right) / 2;
-            if (valueAt(right) * valueAt(mid) > 0)
+            if (valueAt(left) * valueAt(mid) > 0)
                 left = mid;
             else right = mid;
         }
         return (left + right) / 2;
     }
+
     public double bisectionMethod(double a, double b){
         double left = a;
         double right = b;
         double epsilon = Math.pow(10, -5);
         while(right - left > epsilon) {
             double mid = (left + right) / 2;
-            if (valueAt(right) * valueAt(mid) > 0)
+            if (valueAt(left) * valueAt(mid) > 0)
                 left = mid;
             else right = mid;
         }
         return (left + right) / 2;
     }
+
     public double newtonRaphsonMethod(double a, double epsilon){
         double x = a;
         while(Math.abs(valueAt(x)) >= epsilon) {
@@ -37,6 +36,7 @@ public abstract class Function {
         }
         return x;
     }
+
     public double newtonRaphsonMethod(double a){
         double x = a;
         double epsilon = Math.pow(10, -5);
@@ -45,6 +45,7 @@ public abstract class Function {
         }
         return x;
     }
+
     public Function taylorPolynomial(int n) {
         double[] coefficients = new double[n];
         double co1 = valueAt(0);
@@ -65,8 +66,5 @@ public abstract class Function {
         return factorial;
     }
 
-    @Override
-    public String toString() {
-        return "(" + this.function + ")";
-    }
+    public abstract String toString();
 }

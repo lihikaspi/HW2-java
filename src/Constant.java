@@ -3,8 +3,6 @@ public class Constant extends Function {
 
     public Constant(double value) {
         this.value = value;
-        if (value % 1 == 0) function = Integer.toString((int)value);
-        else function = Double.toString(value);
     }
 
     @Override
@@ -45,6 +43,7 @@ public class Constant extends Function {
 
     @Override
     public String toString() {
-        return super.toString();
+        if (value%1 == 0) return "(" + (int)value + ")";
+        return "(" + value + ")";
     }
 }

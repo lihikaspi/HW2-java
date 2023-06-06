@@ -5,11 +5,10 @@ public class Power extends Function {
     public Power(Function function,int power) {
         this.function = function;
         this.power = power;
-        turnToString();
     }
 
-    private void turnToString() {
-        super.function = function.toString() + "^" + power;
+    private String turnToString() {
+        return function.toString() + "^" + power;
     }
 
     @Override
@@ -19,8 +18,6 @@ public class Power extends Function {
 
     @Override
     public Function derivative() {
-        function.derivative();
-        if (power-1 == 1) return new MultiProduct(new Constant(power), function, function.derivative());
         if (power-1 == 0) return function.derivative();
         else return new MultiProduct(new Constant(power), new Power(function, power-1), function.derivative());
     }
@@ -52,6 +49,6 @@ public class Power extends Function {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "(" + turnToString() + ")";
     }
 }

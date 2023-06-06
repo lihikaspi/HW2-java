@@ -20,7 +20,9 @@ public class Power extends Function {
     @Override
     public String derivative() {
         function.derivative();
-        super.derivative = new MultiProduct(new Constant(power), function.derivative, new Power(function, power-1));
+        if (power-1 == 1) super.derivative = new MultiProduct(new Constant(power), function, function.derivative);
+        if (power-1 == 0) super.derivative = function.derivative;
+        else super.derivative = new MultiProduct(new Constant(power), new Power(function, power-1), function.derivative);
         String derivative;
         if (power == 1)  derivative = "(" + function.derivative() + ")";
         else derivative = "(" + power + " * " + function.toString()

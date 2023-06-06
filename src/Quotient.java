@@ -19,15 +19,9 @@ public class Quotient extends Function {
     }
 
     @Override
-    public String derivative() {
-        f.derivative();
-        g.derivative();
-        Power bottom = new Power(g, 2);
-        derivative = new Quotient(new Difference(
-                new Product(f.derivative, g), new Product(g.derivative, f)), bottom);
-        return "(((" + f.derivative() + " * " + g.toString() +
-                ") - (" + g.derivative() + " * " + f.toString() + ")) / " +
-                bottom.toString() + ")";
+    public Function derivative() {
+        return new Quotient(new Difference(new Product(f.derivative(), g),
+                new Product(g.derivative(), f)), new Power(g, 2));
     }
 
     @Override
@@ -51,7 +45,7 @@ public class Quotient extends Function {
     }
 
     @Override
-    public String taylorPolynomial(int n) {
+    public Function taylorPolynomial(int n) {
         return super.taylorPolynomial(n);
     }
 

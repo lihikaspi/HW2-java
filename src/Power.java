@@ -18,16 +18,11 @@ public class Power extends Function {
     }
 
     @Override
-    public String derivative() {
+    public Function derivative() {
         function.derivative();
-        if (power-1 == 1) super.derivative = new MultiProduct(new Constant(power), function, function.derivative);
-        if (power-1 == 0) super.derivative = function.derivative;
-        else super.derivative = new MultiProduct(new Constant(power), new Power(function, power-1), function.derivative);
-        String derivative;
-        if (power == 1)  derivative = "(" + function.derivative() + ")";
-        else derivative = "(" + power + " * " + function.toString()
-                + "^" + (power-1) + " * " + function.derivative() + ")";
-        return derivative;
+        if (power-1 == 1) return new MultiProduct(new Constant(power), function, function.derivative());
+        if (power-1 == 0) return function.derivative();
+        else return new MultiProduct(new Constant(power), new Power(function, power-1), function.derivative());
     }
 
     @Override
@@ -51,7 +46,7 @@ public class Power extends Function {
     }
 
     @Override
-    public String taylorPolynomial(int n) {
+    public Function taylorPolynomial(int n) {
         return super.taylorPolynomial(n);
     }
 

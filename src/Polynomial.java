@@ -1,5 +1,3 @@
-import java.util.concurrent.ExecutionException;
-
 public class Polynomial extends Function{
     private final  double[] coefficients;
 
@@ -66,11 +64,8 @@ public class Polynomial extends Function{
     }
 
     @Override
-    public String derivative() {
-        if (coefficients.length == 1) {
-            derivative = new Constant(0);
-            return derivative.toString();
-        }
+    public Function derivative() {
+        if (coefficients.length == 1) return new Constant(0);
         double[] newCoefficients;
         double co1 = 0;
         if (coefficients.length != 1) {
@@ -81,8 +76,7 @@ public class Polynomial extends Function{
         for (int i = 2; i < coefficients.length; i++) {
             newCoefficients[i-2] = coefficients[i] * i;
         }
-        derivative =  new Polynomial(co1, newCoefficients);
-        return derivative.toString();
+        return new Polynomial(co1, newCoefficients);
     }
 
     @Override
@@ -106,21 +100,14 @@ public class Polynomial extends Function{
     }
 
     @Override
-    public String taylorPolynomial(int n) {
-        if (n == 0) {
-            if (coefficients[0]%1 == 0){
-                return "("+(int)coefficients[0] + ")";
-            } else {
-                return "(" + coefficients[0] + ")";
-            }
-        }
-        if (n >= coefficients.length) return toString();
+    public Function taylorPolynomial(int n) {
+        if (n >= coefficients.length) return this;
         double[] newCoefficients = new double[n];
         double co1 = coefficients[0];
         for (int i = 1; i <= n; i++) {
             newCoefficients[i-1] = coefficients[i];
         }
-        return new Polynomial(co1, newCoefficients).toString();
+        return new Polynomial(co1, newCoefficients);
     }
 
     @Override

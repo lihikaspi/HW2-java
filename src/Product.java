@@ -18,10 +18,8 @@ public class Product extends Function{
     }
 
     @Override
-    public String derivative() {
-        String derivative = "((" + f.derivative() + " * " + g.toString() + ") + (" + g.derivative() + " * " + f.toString() + "))";
-        super.derivative = new Sum(new Product(f.derivative, g), new Product(g.derivative, f));
-        return derivative;
+    public Function derivative() {
+        return new Sum(new Product(f.derivative(), g), new Product(g.derivative(), f));
     }
 
     @Override
@@ -45,7 +43,7 @@ public class Product extends Function{
     }
 
     @Override
-    public String taylorPolynomial(int n) {
+    public Function taylorPolynomial(int n) {
         return super.taylorPolynomial(n);
     }
 

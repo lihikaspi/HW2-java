@@ -30,18 +30,14 @@ public class MultiSum extends Function {
     }
 
     @Override
-    public String derivative() {
+    public Function derivative() {
         Function[] derivatives = new Function[functions.length-2];
-        String derivative = "(";
-        derivative += functions[0].derivative() + " + " + functions[1].derivative();
-        Function der1 = functions[0].derivative;;
-        Function der2 = functions[1].derivative;;
+        Function der1 = functions[0].derivative();
+        Function der2 = functions[1].derivative();
         for (int i = 2; i < functions.length; i++) {
-            derivative += " + " + functions[i].derivative();
-            derivatives[i-2] = functions[i].derivative;
+            derivatives[i-2] = functions[i].derivative();
         }
-        super.derivative = new MultiSum(der1, der2, derivatives);
-        return derivative + ")";
+        return new MultiSum(der1, der2, derivatives);
     }
 
     @Override
@@ -65,7 +61,7 @@ public class MultiSum extends Function {
     }
 
     @Override
-    public String taylorPolynomial(int n) {
+    public Function taylorPolynomial(int n) {
         return super.taylorPolynomial(n);
     }
 

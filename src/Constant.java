@@ -13,9 +13,8 @@ public class Constant extends Function {
     }
 
     @Override
-    public String derivative() {
-        derivative = new Constant(0);
-        return "(0)";
+    public Function derivative() {
+        return new Constant(0);
     }
 
     // what to return ???????
@@ -40,8 +39,8 @@ public class Constant extends Function {
     }
 
     @Override
-    public String taylorPolynomial(int n) {
-        return toString();
+    public Function taylorPolynomial(int n) {
+        return this;
     }
 
     @Override

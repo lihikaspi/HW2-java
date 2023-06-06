@@ -30,17 +30,7 @@ public class MultiProduct extends Function {
     }
 
     @Override
-    public String derivative() {
-        String derivative = "(";
-        for (int i = 0; i < functions.length; i++) {
-            derivative += "(" + functions[i].derivative();
-            for (int j = 0; j < functions.length; j++) {
-                if (i != j) derivative += " * " + functions[j].toString();
-            }
-            if (i != functions.length-1) derivative += ") + ";
-        }
-        derivative += "))";
-
+    public Function derivative() {
         MultiProduct[] mp = new MultiProduct[functions.length-2];
         MultiProduct mp1 = null;
         MultiProduct mp2 = null;
@@ -58,12 +48,12 @@ public class MultiProduct extends Function {
             for (int k = 0; k < funcs.length-1; k++) {
                 new_funcs[k] = funcs[k+1];
             }
-            if (i == 0) mp1 = new MultiProduct(functions[i].derivative, func1, new_funcs);
-            if (i == 1) mp2 = new MultiProduct(functions[i].derivative, func1, new_funcs);
-            else if (i >= 2) mp[i-2] = new MultiProduct(functions[i].derivative, func1, new_funcs);
+            functions[i].derivative();
+            if (i == 0) mp1 = new MultiProduct(functions[i].derivative(), func1, new_funcs);
+            if (i == 1) mp2 = new MultiProduct(functions[i].derivative(), func1, new_funcs);
+            else if (i >= 2) mp[i-2] = new MultiProduct(functions[i].derivative(), func1, new_funcs);
         }
-        super.derivative = new MultiSum(mp1, mp2, mp) ;
-        return derivative;
+        return new MultiSum(mp1, mp2, mp);
     }
 
     @Override
@@ -87,7 +77,7 @@ public class MultiProduct extends Function {
     }
 
     @Override
-    public String taylorPolynomial(int n) {
+    public Function taylorPolynomial(int n) {
         return super.taylorPolynomial(n);
     }
 

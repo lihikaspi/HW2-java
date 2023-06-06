@@ -18,10 +18,8 @@ public class Sum extends Function {
     }
 
     @Override
-    public String derivative() {
-        String derivative = "(" + f.derivative() + " + " + g.derivative() + ")";
-        super.derivative = new Sum(f.derivative, g.derivative);
-        return derivative;
+    public Function derivative() {
+        return new Sum(f.derivative(), g.derivative());
     }
 
     @Override
@@ -45,7 +43,7 @@ public class Sum extends Function {
     }
 
     @Override
-    public String taylorPolynomial(int n) {
+    public Function taylorPolynomial(int n) {
         return super.taylorPolynomial(n);
     }
 

@@ -1,14 +1,12 @@
 public abstract class Function {
     protected String function;
-    protected Function derivative;
 
     public Function() {
         this.function = null;
-        this.derivative = null;
     }
 
     public abstract double valueAt(double x);
-    public abstract String derivative();
+    public abstract Function derivative();
     public double bisectionMethod(double a, double b, double epsilon){
         double left = a;
         double right = b;
@@ -35,7 +33,7 @@ public abstract class Function {
     public double newtonRaphsonMethod(double a, double epsilon){
         double x = a;
         while(Math.abs(valueAt(x)) >= epsilon) {
-            x = x - (valueAt(x) / derivative.valueAt(x));
+            x = x - (valueAt(x) / derivative().valueAt(x));
         }
         return x;
     }
@@ -43,21 +41,20 @@ public abstract class Function {
         double x = a;
         double epsilon = Math.pow(10, -5);
         while(Math.abs(valueAt(x)) >= epsilon) {
-            x = x - (valueAt(x) / derivative.valueAt(x));
+            x = x - (valueAt(x) / derivative().valueAt(x));
         }
         return x;
     }
-    public String taylorPolynomial(int n) {
+    public Function taylorPolynomial(int n) {
         double[] coefficients = new double[n];
         double co1 = valueAt(0);
-        Function derivativeI = this.derivative;
+        Function derivativeI = derivative();
         for (int i = 1; i <= n; i++) {
             double factorial = factorial(i);
             coefficients[i-1] = derivativeI.valueAt(0) / factorial;
-            derivativeI.derivative();
-            derivativeI = derivativeI.derivative;
+            derivativeI = derivativeI.derivative();
         }
-        return new Polynomial(co1, coefficients).toString();
+        return new Polynomial(co1, coefficients);
     }
 
     private double factorial(int n) {

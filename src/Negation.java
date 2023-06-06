@@ -16,9 +16,8 @@ public class Negation extends Function {
     }
 
     @Override
-    public String derivative() {
-        derivative = new Product(new Constant(-1), function);
-        return "(-" + function.derivative() + ")";
+    public Function derivative() {
+        return new Negation(function.derivative());
     }
 
     @Override
@@ -42,7 +41,7 @@ public class Negation extends Function {
     }
 
     @Override
-    public String taylorPolynomial(int n) {
+    public Function taylorPolynomial(int n) {
         return super.taylorPolynomial(n);
     }
 

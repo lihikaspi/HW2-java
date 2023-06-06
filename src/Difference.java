@@ -23,11 +23,8 @@ public class Difference extends Function {
     }
 
     @Override
-    public String derivative() {
-        f.derivative();
-        g.derivative();
-        derivative = new Difference(f.derivative, g.derivative);
-        return "(" + f.derivative() + " - " + g.derivative() + ")";
+    public Function derivative() {
+        return new Difference(f.derivative(), g.derivative());
     }
 
     @Override
@@ -51,7 +48,7 @@ public class Difference extends Function {
     }
 
     @Override
-    public String taylorPolynomial(int n) {
+    public Function taylorPolynomial(int n) {
         return super.taylorPolynomial(n);
     }
 

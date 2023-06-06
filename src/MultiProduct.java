@@ -17,7 +17,7 @@ public class MultiProduct extends Function {
             func += functions[i].toString();
             if (i != functions.length-1) func += " * ";
         }
-        super.setFunction(func);
+        function = func;
     }
 
     @Override
@@ -31,35 +31,39 @@ public class MultiProduct extends Function {
 
     @Override
     public String derivative() {
+        String derivative = "(";
+        for (int i = 0; i < functions.length; i++) {
+            derivative += "(" + functions[i].derivative();
+            for (int j = 0; j < functions.length; j++) {
+                if (i != j) derivative += " * " + functions[j].toString();
+            }
+            if (i != functions.length-1) derivative += ") + ";
+        }
+        derivative += "))";
+
         MultiProduct[] mp = new MultiProduct[functions.length-2];
         MultiProduct mp1 = null;
         MultiProduct mp2 = null;
-        String derivative = "(";
-        int r = 0;
         for (int i = 0; i < functions.length; i++) {
-            derivative += "(" + functions[i].derivative();
-            Function[] fs = new Function[functions.length-1];
-            int k = 0;
+            Function[] funcs = new Function[functions.length-1];
+            int t = 0;
             for (int j = 0; j < functions.length; j++) {
-                if (i == j) continue;
-                derivative += " * " + functions[j].toString();
-                fs[k] = functions[j];
-                k++;
+                if (i != j) {
+                    funcs[t] = functions[j];
+                    t++;
+                }
             }
-            if (i != functions.length-1) derivative += ") + ";
-            Function[] new_fs = new Function[functions.length-2];
-            for (int t = 0; t < new_fs.length; t++) {
-                new_fs[t] = fs[t+1];
+            Function func1 = funcs[0];
+            Function[] new_funcs = new Function[functions.length-2];
+            for (int k = 0; k < funcs.length-1; k++) {
+                new_funcs[k] = funcs[k+1];
             }
-            if (i == 0) mp1 = new MultiProduct(functions[i].getDerivative(), fs[0], new_fs);
-            else if (i == 1) mp2 = new MultiProduct(functions[i].getDerivative(), fs[0], new_fs);
-            else {
-                mp[r] = new MultiProduct(functions[i].getDerivative(), fs[0], new_fs);
-                r++;
-            }
+            if (i == 0) mp1 = new MultiProduct(functions[i].derivative, func1, new_funcs);
+            if (i == 1) mp2 = new MultiProduct(functions[i].derivative, func1, new_funcs);
+            else if (i >= 2) mp[i-2] = new MultiProduct(functions[i].derivative, func1, new_funcs);
         }
-        super.setDerivative(new MultiSum(mp1, mp2, mp));
-        return derivative + "))";
+        super.derivative = new MultiSum(mp1, mp2, mp) ;
+        return derivative;
     }
 
     @Override

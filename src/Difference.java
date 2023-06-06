@@ -14,7 +14,7 @@ public class Difference extends Function {
     }
 
     private void turnToString() {
-        super.setFunction(f.toString() + " - " + g.toString());
+        function =f.toString() + " - " + g.toString();
     }
 
     @Override
@@ -26,7 +26,7 @@ public class Difference extends Function {
     public String derivative() {
         f.derivative();
         g.derivative();
-        super.setDerivative(new Difference(f.getDerivative(), g.getDerivative()));
+        derivative = new Difference(f.derivative, g.derivative);
         return "(" + f.derivative() + " - " + g.derivative() + ")";
     }
 

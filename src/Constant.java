@@ -3,8 +3,8 @@ public class Constant extends Function {
 
     public Constant(double value) {
         this.value = value;
-        if (value % 1 == 0) super.setFunction(Integer.toString((int)value));
-        else super.setFunction(Double.toString(value));
+        if (value % 1 == 0) function = Integer.toString((int)value);
+        else function = Double.toString(value);
     }
 
     @Override
@@ -14,7 +14,7 @@ public class Constant extends Function {
 
     @Override
     public String derivative() {
-        super.setDerivative(new Constant(0));
+        derivative = new Constant(0);
         return "(0)";
     }
 

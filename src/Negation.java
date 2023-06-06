@@ -7,7 +7,7 @@ public class Negation extends Function {
     }
 
     private void turnToString() {
-        super.setFunction("-" + function.toString());
+        super.function = "-" + function.toString();
     }
 
     @Override
@@ -17,7 +17,7 @@ public class Negation extends Function {
 
     @Override
     public String derivative() {
-        super.setDerivative(new Product(new Constant(-1), function));
+        derivative = new Product(new Constant(-1), function);
         return "(-" + function.derivative() + ")";
     }
 

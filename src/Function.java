@@ -1,21 +1,10 @@
 public abstract class Function {
-    private String function;
-    private Function derivative; // TODO: switch to protected ???
+    protected String function;
+    protected Function derivative; // TODO: switch to protected ???
 
     public Function() {
         this.function = null;
-    }
-
-    public void setDerivative(Function derivative) {
-        this.derivative = derivative;
-    }
-
-    public Function getDerivative() {
-        return derivative;
-    }
-
-    public void setFunction(String function) {
-        this.function = function;
+        this.derivative = null;
     }
 
     public abstract double valueAt(double x);
@@ -66,7 +55,7 @@ public abstract class Function {
             double factorial = factorial(i);
             coefficients[i-1] = derivativeI.valueAt(0) / factorial;
             derivativeI.derivative();
-            derivativeI = derivativeI.getDerivative();
+            derivativeI = derivativeI.derivative;
         }
         return new Polynomial(co1, coefficients).toString();
     }

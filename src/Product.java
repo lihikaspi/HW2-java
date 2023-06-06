@@ -9,7 +9,7 @@ public class Product extends Function{
     }
 
     private void turnToString() {
-        super.setFunction(f.toString() + " * " + g.toString());
+        function = f.toString() + " * " + g.toString();
     }
 
     @Override
@@ -20,7 +20,7 @@ public class Product extends Function{
     @Override
     public String derivative() {
         String derivative = "((" + f.derivative() + " * " + g.toString() + ") + (" + g.derivative() + " * " + f.toString() + "))";
-        super.setDerivative(new Sum(new Product(f.getDerivative(), g), new Product(g.getDerivative(), f)));
+        super.derivative = new Sum(new Product(f.derivative, g), new Product(g.derivative, f));
         return derivative;
     }
 

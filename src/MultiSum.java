@@ -17,7 +17,7 @@ public class MultiSum extends Function {
             function += functions[i].toString();
             if (i != functions.length-1) function += " + ";
         }
-        super.setFunction(function);
+        super.function = function;
     }
 
     @Override
@@ -34,13 +34,13 @@ public class MultiSum extends Function {
         Function[] derivatives = new Function[functions.length-2];
         String derivative = "(";
         derivative += functions[0].derivative() + " + " + functions[1].derivative();
-        Function der1 = functions[0].getDerivative();;
-        Function der2 = functions[1].getDerivative();;
+        Function der1 = functions[0].derivative;;
+        Function der2 = functions[1].derivative;;
         for (int i = 2; i < functions.length; i++) {
             derivative += " + " + functions[i].derivative();
-            derivatives[i-2] = functions[i].getDerivative();
+            derivatives[i-2] = functions[i].derivative;
         }
-        super.setDerivative(new MultiSum(der1, der2, derivatives));
+        super.derivative = new MultiSum(der1, der2, derivatives);
         return derivative + ")";
     }
 

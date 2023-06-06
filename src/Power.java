@@ -9,7 +9,7 @@ public class Power extends Function {
     }
 
     private void turnToString() {
-        super.setFunction(function.toString() + "^" + power);
+        super.function = function.toString() + "^" + power;
     }
 
     @Override
@@ -20,8 +20,7 @@ public class Power extends Function {
     @Override
     public String derivative() {
         function.derivative();
-        super.setDerivative(new MultiProduct(new Constant(power), function.getDerivative(),
-                new Power(function, power-1)));
+        super.derivative = new MultiProduct(new Constant(power), function.derivative, new Power(function, power-1));
         String derivative;
         if (power == 1)  derivative = "(" + power + " * " + function.derivative() + ")";
         else derivative = "(" + power + " * "+ function.derivative() +

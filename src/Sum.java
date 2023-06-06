@@ -9,7 +9,7 @@ public class Sum extends Function {
     }
 
     private void turnToString() {
-        super.setFunction(f.toString() + " + " + g.toString());
+        super.function = f.toString() + " + " + g.toString();
     }
 
     @Override
@@ -19,12 +19,8 @@ public class Sum extends Function {
 
     @Override
     public String derivative() {
-        if (f.getClass().getSimpleName().equals("Polynomial"))
-            if (((Polynomial)f).getCoefficients().length == 0) throw new RuntimeException(f.toString());
-        if (g.getClass().getSimpleName().equals("Polynomial"))
-                if (((Polynomial)g).getCoefficients().length == 0) throw new RuntimeException(g.toString());
         String derivative = "(" + f.derivative() + " + " + g.derivative() + ")";
-        super.setDerivative(new Sum(f.getDerivative(), g.getDerivative()));
+        super.derivative = new Sum(f.derivative, g.derivative);
         return derivative;
     }
 

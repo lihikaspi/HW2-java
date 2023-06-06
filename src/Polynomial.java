@@ -1,8 +1,7 @@
 import java.util.concurrent.ExecutionException;
 
 public class Polynomial extends Function{
-    private double[] coefficients;
-    private Polynomial derivative;
+    private final  double[] coefficients;
 
     public Polynomial(double co1, double...  coefficients) {
         this.coefficients = new double[coefficients.length+1];
@@ -11,23 +10,6 @@ public class Polynomial extends Function{
             this.coefficients[i+1] = coefficients[i];
         }
         turnToString();
-    }
-
-    public Polynomial(Function function) {
-        // TODO: build copy constructor
-    }
-
-    @Override
-    public void setFunction(String function) {
-        super.setFunction(function);
-    }
-
-    public Polynomial getDerivative() {
-        return this.derivative;
-    }
-
-    public double[] getCoefficients() {
-        return coefficients;
     }
 
     private void turnToString() {
@@ -60,7 +42,7 @@ public class Polynomial extends Function{
                 else func += " + " + temp;
             }
         }
-        super.setFunction(func);
+        super.function = func;
     }
 
     @Override
@@ -75,7 +57,7 @@ public class Polynomial extends Function{
     @Override
     public String derivative() {
         if (coefficients.length == 1) {
-            derivative = new Polynomial(0);
+            derivative = new Constant(0);
             return derivative.toString();
         }
         double[] newCoefficients;
@@ -89,7 +71,6 @@ public class Polynomial extends Function{
             newCoefficients[i-2] = coefficients[i] * i;
         }
         derivative =  new Polynomial(co1, newCoefficients);
-        super.setDerivative(this.derivative);
         return derivative.toString();
     }
 

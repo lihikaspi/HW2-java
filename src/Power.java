@@ -22,9 +22,9 @@ public class Power extends Function {
         function.derivative();
         super.derivative = new MultiProduct(new Constant(power), function.derivative, new Power(function, power-1));
         String derivative;
-        if (power == 1)  derivative = "(" + power + " * " + function.derivative() + ")";
-        else derivative = "(" + power + " * "+ function.derivative() +
-                " * " + function.toString() + "^" + (power-1) + ")";
+        if (power == 1)  derivative = "(" + function.derivative() + ")";
+        else derivative = "(" + power + " * " + function.toString()
+                + "^" + (power-1) + " * " + function.derivative() + ")";
         return derivative;
     }
 

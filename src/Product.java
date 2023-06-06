@@ -3,7 +3,6 @@ public class Product extends Function{
     private final Function g;
 
     public Product(Function f, Function g) {
-        super();
         this.f = f;
         this.g = g;
         turnToString();

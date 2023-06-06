@@ -4,7 +4,6 @@ public class Power extends Function {
     private Function newFunction; // TODO: represent new function as polynomial --how?
 
     public Power(Function function,int power) {
-        super();
         this.function = function;
         this.power = power;
         turnToString();

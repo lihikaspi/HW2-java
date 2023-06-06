@@ -8,7 +8,6 @@ public class Difference extends Function {
      * @param g second
      */
     public Difference(Function f, Function g){
-        super();
         this.f = f;
         this.g = g;
         turnToString();

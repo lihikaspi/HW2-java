@@ -2,7 +2,6 @@ public class Negation extends Function {
     private final Function function;
 
     public Negation(Function function) {
-        super();
         this.function = function;
         turnToString();
     }

@@ -3,7 +3,6 @@ public class Sum extends Function {
     private final Function g;
 
     public Sum(Function f, Function g) {
-        super();
         this.f = f;
         this.g = g;
         turnToString();

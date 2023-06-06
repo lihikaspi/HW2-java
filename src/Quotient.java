@@ -4,7 +4,6 @@ public class Quotient extends Function {
 
     public Quotient(Function f, Function g) {
         // f / g
-        super();
         this.f = f;
         this.g = g;
         turnToString();

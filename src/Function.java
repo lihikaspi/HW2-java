@@ -59,17 +59,6 @@ public abstract class Function {
         return x;
     }
     public String taylorPolynomial(int n) {
-//        double[] coefficients = new double[n+1];
-//        Function derivativeI = this.derivative;
-//        coefficients[0] = valueAt(0);
-//        for (int i = 1; i <= n; i++) {
-//            double factorial = factorial(i);
-//            coefficients[i] = derivativeI.valueAt(0) / factorial;
-//            derivativeI.derivative();
-//            derivativeI = derivativeI.getDerivative();
-//        }
-//        return new Polynomial(coefficients).toString();
-
         double[] coefficients = new double[n];
         double co1 = valueAt(0);
         Function derivativeI = this.derivative;

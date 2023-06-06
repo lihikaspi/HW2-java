@@ -31,17 +31,16 @@ public class MultiSum extends Function {
 
     @Override
     public String derivative() {
-        Function[] derivatives = new Function[functions.length];
+        Function[] derivatives = new Function[functions.length-2];
         String derivative = "(";
-        for (int i = 0; i < functions.length; i++) {
-            derivative += functions[i].derivative();
-            derivatives[i] = functions[i].getDerivative();
-
-            if (i != functions.length -1){
-                derivative += " + ";
-            }
+        derivative += functions[0].derivative() + " + " + functions[1].derivative();
+        Function der1 = functions[0].getDerivative();;
+        Function der2 = functions[1].getDerivative();;
+        for (int i = 2; i < functions.length; i++) {
+            derivative += " + " + functions[i].derivative();
+            derivatives[i-2] = functions[i].getDerivative();
         }
-        super.setDerivative(new MultiSum(derivatives[0], derivatives[1], derivatives));
+        super.setDerivative(new MultiSum(der1, der2, derivatives));
         return derivative + ")";
     }
 

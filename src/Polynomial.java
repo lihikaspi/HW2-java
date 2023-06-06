@@ -12,9 +12,20 @@ public class Polynomial extends Function{
         turnToString();
     }
 
+    private boolean emptyPoly(){
+        for (double coefficient : coefficients) {
+            if (coefficient != 0) return false;
+        }
+        return true;
+    }
+
     private void turnToString() {
         String func = "";
         String temp;
+        if (emptyPoly()) {
+            super.function = "0";
+            return;
+        }
         for (int i = 0; i < coefficients.length; i++) {
             // find the different powers
             if (coefficients[i] == 0) continue;

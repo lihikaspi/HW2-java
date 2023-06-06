@@ -1,6 +1,6 @@
 public abstract class Function {
     protected String function;
-    protected Function derivative; // TODO: switch to protected ???
+    protected Function derivative;
 
     public Function() {
         this.function = null;
@@ -60,7 +60,7 @@ public abstract class Function {
         return new Polynomial(co1, coefficients).toString();
     }
 
-    private int factorial(int n) {
+    private double factorial(int n) {
         int factorial = 1;
         for (int i = 1; i <= n; i++) {
             factorial *= i;

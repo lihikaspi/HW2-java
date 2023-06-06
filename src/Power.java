@@ -1,20 +1,11 @@
 public class Power extends Function {
     private final int power;
     private final Function function;
-    private Function newFunction; // TODO: represent new function as polynomial --how?
 
     public Power(Function function,int power) {
         this.function = function;
         this.power = power;
         turnToString();
-        if (power > 2) {
-            Function[] functions = new Function[power-2];
-            for (int i = 0; i < power; i++)
-                functions[i] = function;
-            this.newFunction = new MultiProduct(functions[0], functions[1], functions);
-        } else if (power == 2) this.newFunction = new Product(function, function);
-        else if (power == 1) this.newFunction = new Polynomial(function);
-        else if (power == 0) this.newFunction = new Constant(1);
     }
 
     private void turnToString() {
@@ -40,22 +31,22 @@ public class Power extends Function {
 
     @Override
     public double bisectionMethod(double a, double b, double epsilon) {
-        return newFunction.bisectionMethod(a, b, epsilon);
+        return super.bisectionMethod(a, b, epsilon);
     }
 
     @Override
     public double bisectionMethod(double a, double b) {
-        return newFunction.bisectionMethod(a, b);
+        return super.bisectionMethod(a, b);
     }
 
     @Override
     public double newtonRaphsonMethod(double a, double epsilon) {
-        return newFunction.newtonRaphsonMethod(a, epsilon);
+        return super.newtonRaphsonMethod(a, epsilon);
     }
 
     @Override
     public double newtonRaphsonMethod(double a) {
-        return newFunction.newtonRaphsonMethod(a);
+        return super.newtonRaphsonMethod(a);
     }
 
     @Override

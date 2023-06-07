@@ -1,7 +1,19 @@
+/**
+ * This class represents a date + time
+ * Inherits from class Date
+ */
 public class DateTime extends Date {
     private int hour;
     private int minute;
 
+    /**
+     * Constructs a new DateTime object
+     * @param year year
+     * @param month month
+     * @param day day
+     * @param hour hour
+     * @param minute minute
+     */
     public DateTime(int year, int month, int day, int hour, int minute) {
         super(year, month, day);
         if (hour < 0 || hour > 23) this.hour = 0;

@@ -1,8 +1,17 @@
+/**
+ * This class represents a date
+ */
 public class Date {
     private int day;
     private int month;
     private  int year;
 
+    /**
+     * Constructs a new Date Object
+     * @param year year
+     * @param month month
+     * @param day day
+     */
     public Date(int year, int month, int day) {
         if (year > 3999 || year < -3999) this.year = 0;
         else this.year = year;

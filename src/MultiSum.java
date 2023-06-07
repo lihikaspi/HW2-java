@@ -10,7 +10,8 @@ public class MultiSum extends Function {
         }
     }
 
-    private String turnToString() {
+    @Override
+    protected String turnToString() {
         String function = "";
         for (int i = 0; i < functions.length; i++) {
             function += functions[i].toString();

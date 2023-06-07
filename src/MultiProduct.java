@@ -10,7 +10,8 @@ public class MultiProduct extends Function {
         }
     }
 
-    public String turnToString() {
+    @Override
+    protected String turnToString() {
         String func = "";
         for (int i = 0; i < functions.length; i++) {
             func += functions[i].toString();

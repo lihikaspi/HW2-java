@@ -6,6 +6,12 @@ public class Constant extends Function {
     }
 
     @Override
+    protected String turnToString(){
+        if (value%1 == 0) return Integer.toString((int)value);
+        return Double.toString(value) ;
+    }
+
+    @Override
     public double valueAt(double x) {
         return value;
     }
@@ -42,7 +48,6 @@ public class Constant extends Function {
 
     @Override
     public String toString() {
-        if (value%1 == 0) return "(" + (int)value + ")";
-        return "(" + value + ")";
+        return "(" + turnToString() + ")";
     }
 }

@@ -5,7 +5,8 @@ public class Negation extends Function {
         this.function = function;
     }
 
-    private String turnToString() {
+    @Override
+    protected String turnToString() {
         return "-" + function.toString();
     }
 

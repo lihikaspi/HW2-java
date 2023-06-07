@@ -2,6 +2,7 @@ public abstract class Function {
     public Function() {
     }
 
+    protected abstract String turnToString();
     /**
      * Calculate value of function at a certain point
      * @param x X to calculate function at

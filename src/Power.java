@@ -7,7 +7,8 @@ public class Power extends Function {
         this.power = power;
     }
 
-    private String turnToString() {
+    @Override
+    protected String turnToString() {
         return function.toString() + "^" + power;
     }
 

@@ -12,7 +12,8 @@ public class Difference extends Function {
         this.g = g;
     }
 
-    private String turnToString() {
+    @Override
+    protected String turnToString() {
         return f.toString() + " - " + g.toString();
     }
 

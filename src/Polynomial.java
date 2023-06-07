@@ -20,7 +20,8 @@ public class Polynomial extends Function{
         return true;
     }
 
-    private String turnToString() {
+    @Override
+    protected String turnToString() {
         String func = "";
         String temp;
         if (emptyPoly()) {

@@ -1,11 +1,16 @@
+/**
+ * This class represents a difference between two functions
+ * Inherits from abstract class Function
+ */
 public class Difference extends Function {
     private final Function f;
     private final Function g;
 
     /**
-     * constructor - assuming the difference is f-g
-     * @param f first
-     * @param g second
+     * Constructs a new Difference object
+     *
+     * @param f first function
+     * @param g second seconf
      */
     public Difference(Function f, Function g){
         this.f = f;

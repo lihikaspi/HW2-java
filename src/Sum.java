@@ -1,7 +1,18 @@
+/**
+ * This class represents a sum of two functions
+ * Inherits from abstract class Function
+ */
 public class Sum extends Function {
     private final Function f;
     private final Function g;
 
+    /**
+     * Constructs a new Sum object
+     * Receives only two functions
+     *
+     * @param f first function
+     * @param g second function
+     */
     public Sum(Function f, Function g) {
         this.f = f;
         this.g = g;

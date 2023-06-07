@@ -1,6 +1,16 @@
+/**
+ * This class represents a polynomial
+ * Inherits from abstract class Function
+ */
 public class Polynomial extends Function{
     private final double[] coefficients;
 
+    /**
+     * Constructs a new Polynomial object
+     *
+     * @param co1 first coefficient
+     * @param coefficients other coefficients
+     */
     public Polynomial(double co1, double...  coefficients) {
         this.coefficients = new double[coefficients.length+1];
         this.coefficients[0] = co1;
@@ -10,7 +20,8 @@ public class Polynomial extends Function{
     }
 
     /**
-     * Check if polynomial is empty
+     * Checks if all the coefficients are zero meaning the polynomial is empty
+     *
      * @return Is without non-zero coefficients
      */
     private boolean emptyPoly(){
@@ -24,14 +35,18 @@ public class Polynomial extends Function{
     protected String turnToString() {
         String func = "";
         String temp;
+
+        // checks if polynomial is empty --> poly = 0
         if (emptyPoly()) {
             return "0";
         }
+
         for (int i = 0; i < coefficients.length; i++) {
-            // find the different powers
+            // finds the different powers
             if (coefficients[i] == 0) continue;
-            boolean sign  = coefficients[i] > 0;
+            boolean sign  = coefficients[i] > 0; // + or - before the coefficient
             if ((coefficients[i] == 1.0 || coefficients[i] == -1.0) && i != 0) {
+                // no need to print the coefficient before "x"
                 if (i == 0) temp = 1 + "";
                 if (i == 1) temp = "x";
                 else temp = "x^" + i;
@@ -45,7 +60,7 @@ public class Polynomial extends Function{
                 else if (i == 1) temp = Math.abs(coefficients[i]) + "x";
                 else temp = Math.abs(coefficients[i]) + "x^" + i;
             }
-            // build the function string
+            // builds the function string
             if (!sign) {
                 if (func.equals("")) func += "-" + temp;
                 else func += " - " + temp;

@@ -1,9 +1,18 @@
+/**
+ * This class represents a quotient between two function
+ * Inherits from abstract class Function
+ */
 public class Quotient extends Function {
     private final Function f;
     private final Function g;
 
+    /**
+     * Constructs a new Quotient object
+     *
+     * @param f numerator
+     * @param g denominator
+     */
     public Quotient(Function f, Function g) {
-        // f / g
         this.f = f;
         this.g = g;
     }

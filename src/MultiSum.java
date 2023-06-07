@@ -1,6 +1,18 @@
+/**
+ * This class represents a sum of at least two functions
+ * Inherits from abstract class Function
+ */
 public class MultiSum extends Function {
     private final Function[] functions;
 
+    /**
+     * Constructs a new MultiSum object
+     * Must receive at least two functions
+     *
+     * @param func1 first function
+     * @param func2 second function
+     * @param funcs other functions
+     */
     public MultiSum(Function func1, Function func2, Function... funcs) {
         this.functions = new Function[funcs.length+2];
         this.functions[0] = func1;

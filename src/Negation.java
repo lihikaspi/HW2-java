@@ -1,6 +1,15 @@
+/**
+ * This class represents an opposite function
+ * Inherits from abstract class Function
+ */
 public class Negation extends Function {
     private final Function function;
 
+    /**
+     * Constructs a new Negation object
+     *
+     * @param function function
+     */
     public Negation(Function function) {
         this.function = function;
     }

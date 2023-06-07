@@ -1,6 +1,15 @@
+/**
+ * This class represents a constant function
+ * Inherits from abstract class Function
+ */
 public class Constant extends Function {
     private final double value;
 
+    /**
+     * Constructs a new Constant object
+     *
+     * @param value constant value
+     */
     public Constant(double value) {
         this.value = value;
     }

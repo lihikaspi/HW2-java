@@ -1,7 +1,17 @@
+/**
+ * This class represents a power function
+ * Inherits from abstract class Function
+ */
 public class Power extends Function {
     private final int power;
     private final Function function;
 
+    /**
+     * Constructs a new Power object
+     *
+     * @param function function
+     * @param power power
+     */
     public Power(Function function,int power) {
         this.function = function;
         this.power = power;

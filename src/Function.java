@@ -1,23 +1,34 @@
+/**
+ * This abstract class represents a Function
+ */
 public abstract class Function {
     public Function() {
     }
 
-    protected abstract String turnToString();
     /**
-     * Calculate value of function at a certain point
+     * Turns the function into a String form
+     * @return String representing the function
+     */
+    protected abstract String turnToString();
+
+    /**
+     * Calculates value of function at a certain point
+     *
      * @param x X to calculate function at
      * @return Value of function at given x
      */
     public abstract double valueAt(double x);
 
     /**
-     * Calculate derivative
+     * Calculates derivative
+     *
      * @return Function representing derivative
      */
     public abstract Function derivative();
 
     /**
      * Calculates root of function between two values with epsilon error using bisection method
+     *
      * @param a Left-most value
      * @param b Right-most value
      * @param epsilon Epsilon of error
@@ -37,6 +48,7 @@ public abstract class Function {
 
     /**
      * Calculates root of function between two values with default epsilon error using bisection method
+     *
      * @param a Left-most value
      * @param b Right-most value
      * @return Root value
@@ -56,6 +68,7 @@ public abstract class Function {
 
     /**
      * Calculates root of function in area of certain point with epsilon error using Newton-Raphson method
+     *
      * @param a Value to find root around
      * @param epsilon Epsilon of error
      * @return Root value
@@ -70,6 +83,7 @@ public abstract class Function {
 
     /**
      * Calculates root of function in area of certain point with default epsilon error using Newton-Raphson method
+     *
      * @param a Value to find root around
      * @return Root value
      */
@@ -83,7 +97,8 @@ public abstract class Function {
     }
 
     /**
-     * Calculate Taylor polynomial of a certain order for function
+     * Calculates Taylor polynomial of a certain order for function
+     *
      * @param n Order of Taylor polynomial to calculate
      * @return Taylor polynomial
      */
@@ -100,7 +115,8 @@ public abstract class Function {
     }
 
     /**
-     * Calculate factorial of a number
+     * Calculates factorial of a number
+     *
      * @param n Value to calculate factorial of
      * @return Double representing factorial
      */
@@ -112,5 +128,6 @@ public abstract class Function {
         return factorial;
     }
 
+    @Override
     public abstract String toString();
 }

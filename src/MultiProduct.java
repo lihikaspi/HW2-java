@@ -1,6 +1,18 @@
+/**
+ * This class represents a product of at least two functions
+ * Inherits from abstract class Function
+ */
 public class MultiProduct extends Function {
     private final Function[] functions;
 
+    /**
+     * Constructs a new MultiProduct object
+     * Must receive at least two functions
+     *
+     * @param func1 first function
+     * @param func2 second function
+     * @param funcs other functions
+     */
     public MultiProduct(Function func1, Function func2, Function... funcs) {
         this.functions = new Function[funcs.length+2];
         this.functions[0] = func1;
@@ -31,6 +43,7 @@ public class MultiProduct extends Function {
 
     @Override
     public Function derivative() {
+        // derivative of MultiProduct is a MultiSum of MultiProducts
         MultiProduct[] mp = new MultiProduct[functions.length-2];
         MultiProduct mp1 = null;
         MultiProduct mp2 = null;

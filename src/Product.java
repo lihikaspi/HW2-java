@@ -1,7 +1,18 @@
+/**
+ * This class represents a product between two functions
+ * Inherits from abstract class Function
+ */
 public class Product extends Function{
     private final Function f;
     private final Function g;
 
+    /**
+     * Constructs a new Product object
+     * Receives only two functions
+     *
+     * @param f first function
+     * @param g second function
+     */
     public Product(Function f, Function g) {
         this.f = f;
         this.g = g;

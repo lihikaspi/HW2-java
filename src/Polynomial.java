@@ -1,5 +1,5 @@
 public class Polynomial extends Function{
-    private final  double[] coefficients;
+    private final double[] coefficients;
 
     public Polynomial(double co1, double...  coefficients) {
         this.coefficients = new double[coefficients.length+1];
@@ -9,6 +9,10 @@ public class Polynomial extends Function{
         }
     }
 
+    /**
+     * Check if polynomial is empty
+     * @return Is without non-zero coefficients
+     */
     private boolean emptyPoly(){
         for (double coefficient : coefficients) {
             if (coefficient != 0) return false;
@@ -66,11 +70,10 @@ public class Polynomial extends Function{
         if (coefficients.length == 1) return new Constant(0);
         double[] newCoefficients;
         double co1 = 0;
-        if (coefficients.length != 1) {
-            newCoefficients = new double[coefficients.length - 2];
-            co1 = coefficients[1];
-        }
-        else newCoefficients = new double[0];
+
+        newCoefficients = new double[coefficients.length - 2];
+        co1 = coefficients[1];
+
         for (int i = 2; i < coefficients.length; i++) {
             newCoefficients[i-2] = coefficients[i] * i;
         }

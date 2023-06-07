@@ -15,7 +15,6 @@ public class Constant extends Function {
         return new Constant(0);
     }
 
-    // what to return ???????
     @Override
     public double bisectionMethod(double a, double b, double epsilon) {
         return a;
